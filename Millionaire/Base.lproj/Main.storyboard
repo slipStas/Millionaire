@@ -107,7 +107,6 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SA0-gg-wDB" firstAttribute="bottom" secondItem="wR0-ek-ms3" secondAttribute="bottom" id="1Pc-pi-K8Z"/>
                             <constraint firstItem="SA0-gg-wDB" firstAttribute="trailing" secondItem="wR0-ek-ms3" secondAttribute="trailing" id="7AZ-Xa-snR"/>
@@ -207,7 +206,6 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="J8o-tO-oh6" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" id="D3L-RY-oWt"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="bottom" secondItem="J8o-tO-oh6" secondAttribute="bottom" id="FLj-8F-M4R"/>
