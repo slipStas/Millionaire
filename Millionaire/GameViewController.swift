@@ -17,19 +17,11 @@ class GameViewController: UIViewController {
     var selectedQuestion: Question?
     var pressedButton: UIButton?
     var countTrueAnswers = 0
+    var numberOfQuestion = 0
     
     var answer: String = "" {
         didSet {
-            if self.checkAnswer() && questions.count > 0 {
-                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
-                    self.pressedButton?.backgroundColor = .green
-                }) { _ in
-                    self.countTrueAnswers += 1
-                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-                    self.startGame()
-                }
-            } else if self.checkAnswer() && questions.count == 0 {
+            if self.checkAnswer() && countTrueAnswers == 14 {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
@@ -39,6 +31,15 @@ class GameViewController: UIViewController {
                     print("you are the winner!!!")
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
                 }
+            } else if self.checkAnswer() {
+                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(3)
+                    self.pressedButton?.backgroundColor = .green
+                }) { _ in
+                    self.countTrueAnswers += 1
+                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+                    self.startGame()
+                }
             } else {
                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
@@ -46,7 +47,6 @@ class GameViewController: UIViewController {
                 }) { _ in
                     self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
-                    //self.stopGame()
                 }
             }
         }
@@ -91,11 +91,8 @@ class GameViewController: UIViewController {
     }
     
     func selectionQuestion() -> Question {
-        let random = arc4random_uniform(UInt32(self.questions.count - 1))
-        let question = questions[Int(random)]
-        
-        questions.remove(at: Int(random))
-        
+        let question = questions[numberOfQuestion]
+        numberOfQuestion += 1
         return question
     }
     
