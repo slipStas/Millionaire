@@ -45,8 +45,14 @@ class GameViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     
     @IBAction func pressedButton(_ sender: Any) {
-        guard let answer = (sender as AnyObject).titleLabel?.text else {return}
+        guard var answer = (sender as AnyObject).titleLabel?.text else {return}
         self.pressedButton = (sender as! UIButton)
+        
+        var count = 0
+        while count < 3 {
+            answer.removeFirst()
+            count += 1
+        }
         self.answer = answer
     }
     
@@ -61,10 +67,10 @@ class GameViewController: UIViewController {
         
         self.questionLabel.text = selectedQuestion?.question
         
-        self.buttonA.setTitle(selectedQuestion?.answers[0], for: .normal)
-        self.buttonB.setTitle(selectedQuestion?.answers[1], for: .normal)
-        self.buttonC.setTitle(selectedQuestion?.answers[2], for: .normal)
-        self.buttonD.setTitle(selectedQuestion?.answers[3], for: .normal)
+        self.buttonA.setTitle("A. " + (selectedQuestion?.answers[0] ?? "no question"), for: .normal)
+        self.buttonB.setTitle("B. " + (selectedQuestion?.answers[1] ?? "no question"), for: .normal)
+        self.buttonC.setTitle("C. " + (selectedQuestion?.answers[2] ?? "no question"), for: .normal)
+        self.buttonD.setTitle("D. " + (selectedQuestion?.answers[3] ?? "no question"), for: .normal)
         
     }
     
@@ -90,8 +96,9 @@ class GameViewController: UIViewController {
         let question4 = Question(question: "Во что превращается гусеница?", answers: ["в мячик", "в пирамидку", "в машинку", "в куколку"], trueAnswer: "в куколку")
         let question5 = Question(question: "К какой группе музыкальных инструментов относится валторна?", answers: ["струнные", "клавишные", "ударные", "духовые"], trueAnswer: "духовые")
         let question6 = Question(question: "В какой басне Крылова среди действующих лиц есть человек?", answers: ["Лягушка и Вол", "Свинья под Дубом", "Осел и Соловей", "Волк на псарне"], trueAnswer: "Волк на псарне")
+        let question7 = Question(question: "Какой фильм сделал знаменитой песню в исполнении Уитни Хьюстон?", answers: ["Красотка", "Телохранитель", "Форрест Гамп", "Пятый элемент"], trueAnswer: "Телохранитель")
         
-        questions.append(contentsOf: [question1, question2, question3, question4, question5, question6])
+        questions.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7])
     }
     
     override func viewDidLoad() {
