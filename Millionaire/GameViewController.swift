@@ -14,14 +14,32 @@ class GameViewController: UIViewController {
     var answer: String = "" {
         didSet {
             if self.checkAnswer() && questions.count > 0 {
-                startGame()
+                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(3)
+                    self.pressedButton?.backgroundColor = .green
+                    print("animate")
+                }) { (finish) in
+                    if finish {
+                        self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+                        self.startGame()
+                    }
+                }
             } else {
-                self.stopGame()
+               UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(3)
+                    self.pressedButton?.backgroundColor = .red
+                    print("animate")
+                }) { (finish) in
+                    if finish {
+                        self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+                        self.stopGame()
+                    }
+                }
             }
         }
     }
-    var whatTheQuestion = 0
     var selectedQuestion: Question?
+    var pressedButton: UIButton?
     
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -32,6 +50,7 @@ class GameViewController: UIViewController {
     
     @IBAction func pressedButton(_ sender: Any) {
         guard let answer = (sender as AnyObject).titleLabel?.text else {return}
+        self.pressedButton = (sender as! UIButton)
         self.answer = answer
     }
     
@@ -54,7 +73,6 @@ class GameViewController: UIViewController {
     }
     
     func checkAnswer() -> Bool {
-        
         let result = self.answer == self.selectedQuestion?.trueAnswer
         
         return result
@@ -82,6 +100,11 @@ class GameViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.buttonA.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+        self.buttonB.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+        self.buttonC.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+        self.buttonD.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
 
         addQuestions()
         startGame()
