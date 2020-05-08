@@ -9,8 +9,15 @@
 import UIKit
 
 class GameViewController: UIViewController {
-
+    
+    /// Game delegate
+    public weak var gameDelegate: GameSceneDelegate?
+    
     var questions: [Question] = []
+    var selectedQuestion: Question?
+    var pressedButton: UIButton?
+    var countTrueAnswers = 0
+    
     var answer: String = "" {
         didSet {
             if self.checkAnswer() && questions.count > 0 {
@@ -18,6 +25,7 @@ class GameViewController: UIViewController {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
                 }) { _ in
+                    self.countTrueAnswers += 1
                     self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     self.startGame()
                 }
@@ -26,9 +34,10 @@ class GameViewController: UIViewController {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
                 }) { _ in
+                    self.countTrueAnswers += 1
                     self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     print("you are the winner!!!")
-                    self.stopGame()
+                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
                 }
             } else {
                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
@@ -36,13 +45,12 @@ class GameViewController: UIViewController {
                     self.pressedButton?.backgroundColor = .red
                 }) { _ in
                     self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-                    self.stopGame()
+                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
+                    //self.stopGame()
                 }
             }
         }
     }
-    var selectedQuestion: Question?
-    var pressedButton: UIButton?
     
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -63,13 +71,8 @@ class GameViewController: UIViewController {
         self.answer = answer
     }
     
-    func stopGame() {
-        print("stop game")
-        
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func startGame() {
+        
         selectedQuestion = selectionQuestion()
         
         self.questionLabel.text = selectedQuestion?.question
@@ -114,14 +117,24 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        addQuestions()
+
         self.buttonA.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
         self.buttonB.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
         self.buttonC.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
         self.buttonD.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
 
-        addQuestions()
         startGame()
+        self.gameDelegate = self
 
     }
 
+}
+
+extension GameViewController: GameSceneDelegate {
+    func didEndGame(result: Int) {
+        self.dismiss(animated: true, completion: nil)
+        print("stop game")
+        print("Your result is \(countTrueAnswers)")
+    }
 }
