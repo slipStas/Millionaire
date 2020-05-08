@@ -18,22 +18,18 @@ class GameViewController: UIViewController {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
                     print("animate")
-                }) { (finish) in
-                    if finish {
-                        self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-                        self.startGame()
-                    }
+                }) { _ in
+                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+                    self.startGame()
                 }
             } else {
-               UIView.animate(withDuration: 0.1, delay: 0, options: [.autoreverse, .repeat], animations: {
+               UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .red
                     print("animate")
-                }) { (finish) in
-                    if finish {
-                        self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-                        self.stopGame()
-                    }
+                }) { _ in
+                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+                    self.stopGame()
                 }
             }
         }
