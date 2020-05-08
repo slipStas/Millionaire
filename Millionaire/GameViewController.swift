@@ -90,7 +90,6 @@ class GameViewController: UIViewController {
     func selectionQuestion() -> Question {
         let random = arc4random_uniform(UInt32(self.questions.count - 1))
         let question = questions[Int(random)]
-        print(random)
         
         questions.remove(at: Int(random))
         
