@@ -17,16 +17,23 @@ class GameViewController: UIViewController {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
-                    print("animate")
                 }) { _ in
                     self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     self.startGame()
+                }
+            } else if self.checkAnswer() && questions.count == 0 {
+                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(3)
+                    self.pressedButton?.backgroundColor = .green
+                }) { _ in
+                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
+                    print("you are the winner!!!")
+                    self.stopGame()
                 }
             } else {
                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .red
-                    print("animate")
                 }) { _ in
                     self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     self.stopGame()
@@ -83,6 +90,7 @@ class GameViewController: UIViewController {
     func selectionQuestion() -> Question {
         let random = arc4random_uniform(UInt32(self.questions.count - 1))
         let question = questions[Int(random)]
+        print(random)
         
         questions.remove(at: Int(random))
         
@@ -97,8 +105,11 @@ class GameViewController: UIViewController {
         let question5 = Question(question: "К какой группе музыкальных инструментов относится валторна?", answers: ["струнные", "клавишные", "ударные", "духовые"], trueAnswer: "духовые")
         let question6 = Question(question: "В какой басне Крылова среди действующих лиц есть человек?", answers: ["Лягушка и Вол", "Свинья под Дубом", "Осел и Соловей", "Волк на псарне"], trueAnswer: "Волк на псарне")
         let question7 = Question(question: "Какой фильм сделал знаменитой песню в исполнении Уитни Хьюстон?", answers: ["Красотка", "Телохранитель", "Форрест Гамп", "Пятый элемент"], trueAnswer: "Телохранитель")
+        let question8 = Question(question: "Кому в работе нужны постромки?", answers: ["врачу", "кузнецу", "извозчику", "охотнику"], trueAnswer: "извозчику")
+        let question9 = Question(question: "Какой писатель сформулировал Три закона робототехники?", answers: ["Карел Чапек", "Айзек Азимов", "Станислав Лем", "Курт Воннегут"], trueAnswer: "Айзек Азимов")
+        let question10 = Question(question: "Какой советский орден был единственным, выпускавшимся не на монетном дворе?", answers: ["орден Александра Невского", "орден «Победа»", "орден Отечественной войны", "орден Трудового Красного Знамени"], trueAnswer: "орден «Победа»")
         
-        questions.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7])
+        questions.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10])
     }
     
     override func viewDidLoad() {
