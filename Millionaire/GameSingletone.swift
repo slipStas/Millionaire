@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game {
+public class Game {
     static let shared = Game()
     
     var gameSession : GameSession?

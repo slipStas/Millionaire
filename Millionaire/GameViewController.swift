@@ -136,5 +136,10 @@ extension GameViewController: GameSceneDelegate {
         self.dismiss(animated: true, completion: nil)
         print("stop game")
         print("Your result is \(countTrueAnswers)")
+        var records = (try? GameCaretaker.shared.load()) ?? []
+        let newRecord = GameSession(date: Date(), value: result).self
+        records.append(newRecord)
+        
+        try? GameCaretaker.shared.save(records: records)
     }
 }

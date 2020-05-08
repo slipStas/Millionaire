@@ -8,6 +8,13 @@
 
 import Foundation
 
-class GameSession {
+class GameSession: Codable {
     
+    let date: Date
+    let value: Int
+    
+    init(date: Date, value: Int) {
+        self.date = date
+        self.value = value
+    }
 }
