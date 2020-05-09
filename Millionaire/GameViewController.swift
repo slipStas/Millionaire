@@ -58,6 +58,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var buttonD: UIButton!
     
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionBackgroundImage: UIButton!
     
     @IBAction func pressedButton(_ sender: Any) {
         guard var answer = (sender as AnyObject).titleLabel?.text else {return}
@@ -120,7 +121,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         addQuestions()
-
         startGame()
         self.gameDelegate = self
 
