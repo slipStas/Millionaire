@@ -25,9 +25,9 @@ class GameViewController: UIViewController {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
+                    self.pressedButton?.backgroundColor = .clear
                 }) { _ in
                     self.countTrueAnswers += 1
-                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     print("you are the winner!!!")
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
                 }
@@ -35,17 +35,17 @@ class GameViewController: UIViewController {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .green
+                    self.pressedButton?.backgroundColor = .clear
                 }) { _ in
                     self.countTrueAnswers += 1
-                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     self.startGame()
                 }
             } else {
-               UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
+                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.backgroundColor = .red
+                    self.pressedButton?.backgroundColor = .clear
                 }) { _ in
-                    self.pressedButton?.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
                 }
             }
@@ -120,11 +120,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         addQuestions()
-
-        self.buttonA.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-        self.buttonB.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-        self.buttonC.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
-        self.buttonD.backgroundColor = #colorLiteral(red: 1, green: 0.5642306805, blue: 0, alpha: 1)
 
         startGame()
         self.gameDelegate = self

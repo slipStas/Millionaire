@@ -134,12 +134,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiO-Cy-jt1">
-                                <rect key="frame" x="183" y="739" width="48" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8o-tO-oh6">
                                 <rect key="frame" x="0.0" y="779" width="414" height="83"/>
                                 <subviews>
@@ -148,9 +142,9 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxB-d0-1KQ">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="41.5"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button" backgroundImage="answer_background">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="pressedButton:" destination="BM0-0c-ANl" eventType="touchUpInside" id="UBI-cg-cKN"/>
@@ -158,12 +152,12 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VW4-cm-xPm">
                                                 <rect key="frame" x="0.0" y="41.5" width="207" height="41.5"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="VW4-cm-xPm" secondAttribute="height" multiplier="5:1" id="hM6-eo-QfZ"/>
                                                 </constraints>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button" backgroundImage="answer_background">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="pressedButton:" destination="BM0-0c-ANl" eventType="touchUpInside" id="TUd-Qh-drN"/>
@@ -179,9 +173,9 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i2z-OO-4Su">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="41.5"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button" backgroundImage="answer_background">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="pressedButton:" destination="BM0-0c-ANl" eventType="touchUpInside" id="C2A-ih-qZk"/>
@@ -189,12 +183,12 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r3o-Wl-jrc">
                                                 <rect key="frame" x="0.0" y="41.5" width="207" height="41.5"/>
-                                                <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="r3o-Wl-jrc" secondAttribute="height" multiplier="5:1" id="h9J-gN-lcW"/>
                                                 </constraints>
-                                                <state key="normal" title="Button">
-                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button" backgroundImage="answer_background">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="pressedButton:" destination="BM0-0c-ANl" eventType="touchUpInside" id="UNL-D0-Y9j"/>
@@ -247,19 +241,36 @@
                                     <constraint firstAttribute="width" secondItem="qSI-SN-mOJ" secondAttribute="height" multiplier="8:1" id="DdD-cL-JUd"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-Mr-ZCc">
+                                <rect key="frame" x="0.0" y="717" width="414" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="2mQ-0e-8kw"/>
+                                </constraints>
+                                <state key="normal" backgroundImage="mainBackground"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiO-Cy-jt1">
+                                <rect key="frame" x="183" y="735" width="48" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="qSI-SN-mOJ" firstAttribute="centerY" secondItem="6tm-dP-lmG" secondAttribute="centerY" id="1DK-ml-y1K"/>
+                            <constraint firstItem="Y7R-Mr-ZCc" firstAttribute="centerX" secondItem="QiO-Cy-jt1" secondAttribute="centerX" id="6Ni-sV-w2y"/>
+                            <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="Y7R-Mr-ZCc" secondAttribute="trailing" id="97s-Ce-yZC"/>
                             <constraint firstItem="J8o-tO-oh6" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" id="D3L-RY-oWt"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="bottom" secondItem="J8o-tO-oh6" secondAttribute="bottom" id="FLj-8F-M4R"/>
-                            <constraint firstItem="QiO-Cy-jt1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ysv-iG-vED" secondAttribute="leading" constant="8" id="IB3-51-2mI"/>
+                            <constraint firstItem="QiO-Cy-jt1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ysv-iG-vED" secondAttribute="leading" constant="20" id="IB3-51-2mI"/>
+                            <constraint firstItem="Y7R-Mr-ZCc" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" id="NMB-A7-91A"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="qSI-SN-mOJ" secondAttribute="trailing" constant="16" id="Wlg-2o-Nba"/>
                             <constraint firstItem="qSI-SN-mOJ" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" constant="16" id="YVj-6g-2bW"/>
-                            <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QiO-Cy-jt1" secondAttribute="trailing" constant="8" id="fbo-hm-2Mc"/>
+                            <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QiO-Cy-jt1" secondAttribute="trailing" constant="20" id="fbo-hm-2Mc"/>
                             <constraint firstItem="qSI-SN-mOJ" firstAttribute="centerX" secondItem="6tm-dP-lmG" secondAttribute="centerX" id="gJ7-IZ-fFO"/>
                             <constraint firstItem="QiO-Cy-jt1" firstAttribute="centerX" secondItem="6tm-dP-lmG" secondAttribute="centerX" id="hjX-kh-Hj4"/>
-                            <constraint firstItem="J8o-tO-oh6" firstAttribute="top" secondItem="QiO-Cy-jt1" secondAttribute="bottom" constant="16" id="tWj-yZ-qHT"/>
+                            <constraint firstItem="J8o-tO-oh6" firstAttribute="top" secondItem="QiO-Cy-jt1" secondAttribute="bottom" constant="20" id="tWj-yZ-qHT"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="J8o-tO-oh6" secondAttribute="trailing" id="wEU-gn-2gg"/>
+                            <constraint firstItem="Y7R-Mr-ZCc" firstAttribute="centerY" secondItem="QiO-Cy-jt1" secondAttribute="centerY" id="xy2-je-WRM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ysv-iG-vED"/>
                     </view>
@@ -296,6 +307,8 @@
     </scenes>
     <resources>
         <image name="50_50" width="200" height="100"/>
+        <image name="answer_background" width="300" height="45"/>
+        <image name="mainBackground" width="600" height="90"/>
         <image name="people" width="200" height="100"/>
         <image name="telephone" width="200" height="100"/>
     </resources>
