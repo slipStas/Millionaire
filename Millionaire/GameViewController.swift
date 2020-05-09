@@ -85,6 +85,7 @@ class GameViewController: UIViewController {
             selectedQuestion?.answers[i] = ""
         }
         addTitileToButtons()
+        self.help50Button.isEnabled = false
     }
     
     func addTitileToButtons() {
@@ -101,6 +102,7 @@ class GameViewController: UIViewController {
         self.questionLabel.text = selectedQuestion?.question
         
         addTitileToButtons()
+        self.help50Button.isEnabled = true
         
     }
     
