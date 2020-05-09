@@ -22,32 +22,11 @@ class GameViewController: UIViewController {
     var answer: String = "" {
         didSet {
             if self.checkAnswer() && countTrueAnswers == 14 {
-                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
-                    self.pressedButton?.backgroundColor = .green
-                    self.pressedButton?.backgroundColor = .clear
-                }) { _ in
-                    self.countTrueAnswers += 1
-                    print("you are the winner!!!")
-                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
-                }
+                animateTrueAnswer()
             } else if self.checkAnswer() {
-                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
-                    self.pressedButton?.backgroundColor = .green
-                    self.pressedButton?.backgroundColor = .clear
-                }) { _ in
-                    self.countTrueAnswers += 1
-                    self.startGame()
-                }
+                animateTrueAnswer()
             } else {
-                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
-                    self.pressedButton?.backgroundColor = .red
-                    self.pressedButton?.backgroundColor = .clear
-                }) { _ in
-                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
-                }
+              animateFalseAnswer()
             }
         }
     }
@@ -70,6 +49,31 @@ class GameViewController: UIViewController {
             count += 1
         }
         self.answer = answer
+    }
+    
+    func animateTrueAnswer() {
+        UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+            UIView.setAnimationRepeatCount(3)
+            self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+            self.pressedButton?.alpha = 0
+            self.pressedButton?.alpha = 1
+        }) { _ in
+            self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+            self.countTrueAnswers += 1
+            self.startGame()
+        }
+    }
+    
+    func animateFalseAnswer() {
+        UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+            UIView.setAnimationRepeatCount(3)
+            self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundFalse"), for: .normal)
+            self.pressedButton?.alpha = 0
+            self.pressedButton?.alpha = 1
+        }) { _ in
+            self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
+            
+        }
     }
     
     func startGame() {
