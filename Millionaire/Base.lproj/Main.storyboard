@@ -135,7 +135,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J8o-tO-oh6">
-                                <rect key="frame" x="0.0" y="779" width="414" height="83"/>
+                                <rect key="frame" x="0.0" y="771" width="414" height="83"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="aK5-ZP-8w1">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="83"/>
@@ -210,6 +210,9 @@
                                             <constraint firstAttribute="width" secondItem="QLE-Wi-LqZ" secondAttribute="height" multiplier="2:1" id="k1w-LF-Gks"/>
                                         </constraints>
                                         <state key="normal" backgroundImage="50_50"/>
+                                        <connections>
+                                            <action selector="help50:" destination="BM0-0c-ANl" eventType="touchUpInside" id="IQ2-JL-87j"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8TL-Uo-LBq">
                                         <rect key="frame" x="95.5" y="0.0" width="48" height="48"/>
@@ -242,14 +245,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y7R-Mr-ZCc">
-                                <rect key="frame" x="0.0" y="717" width="414" height="60"/>
+                                <rect key="frame" x="0.0" y="695" width="414" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2mQ-0e-8kw"/>
                                 </constraints>
                                 <state key="normal" backgroundImage="mainBackground"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiO-Cy-jt1">
-                                <rect key="frame" x="183" y="735" width="48" height="24"/>
+                                <rect key="frame" x="183" y="713" width="48" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -260,7 +263,7 @@
                             <constraint firstItem="Y7R-Mr-ZCc" firstAttribute="centerX" secondItem="QiO-Cy-jt1" secondAttribute="centerX" id="6Ni-sV-w2y"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="Y7R-Mr-ZCc" secondAttribute="trailing" id="97s-Ce-yZC"/>
                             <constraint firstItem="J8o-tO-oh6" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" id="D3L-RY-oWt"/>
-                            <constraint firstItem="Ysv-iG-vED" firstAttribute="bottom" secondItem="J8o-tO-oh6" secondAttribute="bottom" id="FLj-8F-M4R"/>
+                            <constraint firstItem="Ysv-iG-vED" firstAttribute="bottom" secondItem="J8o-tO-oh6" secondAttribute="bottom" constant="8" id="FLj-8F-M4R"/>
                             <constraint firstItem="QiO-Cy-jt1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ysv-iG-vED" secondAttribute="leading" constant="25" id="IB3-51-2mI"/>
                             <constraint firstItem="Y7R-Mr-ZCc" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" id="NMB-A7-91A"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="qSI-SN-mOJ" secondAttribute="trailing" constant="16" id="Wlg-2o-Nba"/>
@@ -269,7 +272,7 @@
                             <constraint firstItem="qSI-SN-mOJ" firstAttribute="centerX" secondItem="6tm-dP-lmG" secondAttribute="centerX" id="gJ7-IZ-fFO"/>
                             <constraint firstItem="QiO-Cy-jt1" firstAttribute="centerX" secondItem="6tm-dP-lmG" secondAttribute="centerX" id="hjX-kh-Hj4"/>
                             <constraint firstItem="qSI-SN-mOJ" firstAttribute="top" secondItem="Ysv-iG-vED" secondAttribute="top" constant="16" id="icd-76-mvf"/>
-                            <constraint firstItem="J8o-tO-oh6" firstAttribute="top" secondItem="Y7R-Mr-ZCc" secondAttribute="bottom" constant="2" id="oZo-nn-0Fp"/>
+                            <constraint firstItem="J8o-tO-oh6" firstAttribute="top" secondItem="Y7R-Mr-ZCc" secondAttribute="bottom" constant="16" id="oZo-nn-0Fp"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="J8o-tO-oh6" secondAttribute="trailing" id="wEU-gn-2gg"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ysv-iG-vED"/>
@@ -279,6 +282,7 @@
                         <outlet property="buttonB" destination="i2z-OO-4Su" id="fjM-8h-vlU"/>
                         <outlet property="buttonC" destination="VW4-cm-xPm" id="vdJ-aA-9pu"/>
                         <outlet property="buttonD" destination="r3o-Wl-jrc" id="rQX-nT-tuB"/>
+                        <outlet property="help50Button" destination="QLE-Wi-LqZ" id="zdn-Pd-em1"/>
                         <outlet property="questionBackgroundImage" destination="Y7R-Mr-ZCc" id="MkM-5D-vPA"/>
                         <outlet property="questionLabel" destination="QiO-Cy-jt1" id="cWI-18-4Pf"/>
                     </connections>

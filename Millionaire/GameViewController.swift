@@ -22,11 +22,37 @@ class GameViewController: UIViewController {
     var answer: String = "" {
         didSet {
             if self.checkAnswer() && countTrueAnswers == 14 {
-                animateTrueAnswer()
+                UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(3)
+                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                    self.pressedButton?.alpha = 0
+                    self.pressedButton?.alpha = 1
+                }) { _ in
+                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+                    self.countTrueAnswers += 1
+                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
+                }
             } else if self.checkAnswer() {
-                animateTrueAnswer()
+                UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(3)
+                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                    self.pressedButton?.alpha = 0
+                    self.pressedButton?.alpha = 1
+                }) { _ in
+                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+                    self.countTrueAnswers += 1
+                    self.startGame()
+                }
             } else {
-              animateFalseAnswer()
+              UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+                  UIView.setAnimationRepeatCount(3)
+                  self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundFalse"), for: .normal)
+                  self.pressedButton?.alpha = 0
+                  self.pressedButton?.alpha = 1
+              }) { _ in
+                  self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
+                  
+              }
             }
         }
     }
@@ -35,6 +61,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var buttonB: UIButton!
     @IBOutlet weak var buttonC: UIButton!
     @IBOutlet weak var buttonD: UIButton!
+    
+    @IBOutlet weak var help50Button: UIButton!
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionBackgroundImage: UIButton!
@@ -51,29 +79,19 @@ class GameViewController: UIViewController {
         self.answer = answer
     }
     
-    func animateTrueAnswer() {
-        UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
-            UIView.setAnimationRepeatCount(3)
-            self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
-            self.pressedButton?.alpha = 0
-            self.pressedButton?.alpha = 1
-        }) { _ in
-            self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-            self.countTrueAnswers += 1
-            self.startGame()
+    @IBAction func help50(_ sender: Any) {
+        guard let falseAnswers = useHelp50() else {return}
+        for i in falseAnswers {
+            selectedQuestion?.answers[i] = ""
         }
+        addTitileToButtons()
     }
     
-    func animateFalseAnswer() {
-        UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
-            UIView.setAnimationRepeatCount(3)
-            self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundFalse"), for: .normal)
-            self.pressedButton?.alpha = 0
-            self.pressedButton?.alpha = 1
-        }) { _ in
-            self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
-            
-        }
+    func addTitileToButtons() {
+        self.buttonA.setTitle("A. " + (selectedQuestion?.answers[0] ?? "no question"), for: .normal)
+        self.buttonB.setTitle("B. " + (selectedQuestion?.answers[1] ?? "no question"), for: .normal)
+        self.buttonC.setTitle("C. " + (selectedQuestion?.answers[2] ?? "no question"), for: .normal)
+        self.buttonD.setTitle("D. " + (selectedQuestion?.answers[3] ?? "no question"), for: .normal)
     }
     
     func startGame() {
@@ -82,10 +100,7 @@ class GameViewController: UIViewController {
         
         self.questionLabel.text = selectedQuestion?.question
         
-        self.buttonA.setTitle("A. " + (selectedQuestion?.answers[0] ?? "no question"), for: .normal)
-        self.buttonB.setTitle("B. " + (selectedQuestion?.answers[1] ?? "no question"), for: .normal)
-        self.buttonC.setTitle("C. " + (selectedQuestion?.answers[2] ?? "no question"), for: .normal)
-        self.buttonD.setTitle("D. " + (selectedQuestion?.answers[3] ?? "no question"), for: .normal)
+        addTitileToButtons()
         
     }
     
@@ -99,6 +114,19 @@ class GameViewController: UIViewController {
         let question = questions[numberOfQuestion]
         numberOfQuestion += 1
         return question
+    }
+    
+    func useHelp50() -> [Int]? {
+        guard let question = selectedQuestion else {return nil}
+        var arrayFalseAnswers: [Int] = []
+        for (j, i) in question.answers.enumerated() {
+            if i != question.trueAnswer {
+                arrayFalseAnswers.append(j)
+            }
+        }
+        let random = arc4random_uniform(2)
+        arrayFalseAnswers.remove(at: Int(random))
+        return arrayFalseAnswers
     }
     
     func addQuestions() {
