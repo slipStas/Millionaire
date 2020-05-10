@@ -67,9 +67,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionBackgroundImage: UIButton!
     
-    @IBAction func pressedButton(_ sender: Any) {
-        guard var answer = (sender as AnyObject).titleLabel?.text else {return}
-        self.pressedButton = (sender as! UIButton)
+    @IBAction func pressedButton(_ sender: UIButton) {
+        guard var answer = sender.titleLabel?.text else {return}
+        self.pressedButton = sender
         
         var count = 0
         while count < 3 {
@@ -120,12 +120,8 @@ class GameViewController: UIViewController {
     
     func useHelp50() -> [Int]? {
         guard let question = selectedQuestion else {return nil}
-        var arrayFalseAnswers: [Int] = []
-        for (j, i) in question.answers.enumerated() {
-            if i != question.trueAnswer {
-                arrayFalseAnswers.append(j)
-            }
-        }
+        var arrayFalseAnswers = question.answers.enumerated().filter {$0.element != question.trueAnswer}.map {$0.offset}
+        
         let random = arc4random_uniform(2)
         arrayFalseAnswers.remove(at: Int(random))
         return arrayFalseAnswers
