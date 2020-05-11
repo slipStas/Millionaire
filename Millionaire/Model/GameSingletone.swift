@@ -13,5 +13,8 @@ public class Game {
     
     var gameSession : GameSession?
     
+    var orderOfQuestions: OrderOfQuestions?
+    var hintsSettings: HintsSettings?
+    
     private init() {}
 }

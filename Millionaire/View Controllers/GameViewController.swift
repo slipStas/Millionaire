@@ -13,14 +13,15 @@ class GameViewController: UIViewController {
     /// Game delegate
     public weak var gameDelegate: GameSceneDelegate?
     
+    public var orderOfQuestions: OrderOfQuestions = Game.shared.orderOfQuestions ?? OrderOfQuestions.inSeries
+    public var hintsSettings: HintsSettings = Game.shared.hintsSettings ?? HintsSettings.infinitely
+    
+    var questionSelectionStrategy: QuestionSelectionStrategy?
     var questions: [Question] = []
     var selectedQuestion: Question?
     var pressedButton: UIButton?
     var countTrueAnswers = 0
     var numberOfQuestion = 0
-    
-    public var orderOfQuestions: OrderOfQuestions = .inSeries
-    public var hintsSettings: HintsSettings = .infinitely
     
     var answer: String = "" {
         didSet {
@@ -100,7 +101,7 @@ class GameViewController: UIViewController {
     
     func startGame() {
         
-        selectedQuestion = selectionQuestion()
+        selectedQuestion = questionSelectionStrategy?.selectionQuestions(questionArray: &questions, number: &numberOfQuestion).0
         
         self.questionLabel.text = selectedQuestion?.question
         
@@ -125,7 +126,7 @@ class GameViewController: UIViewController {
         guard let question = selectedQuestion else {return nil}
         var arrayFalseAnswers = question.answers.enumerated().filter {$0.element != question.trueAnswer}.map {$0.offset}
         
-        let random = arc4random_uniform(2)
+        let random = CGFloat.random(in: 0...2) //arc4random_uniform(2)
         arrayFalseAnswers.remove(at: Int(random))
         return arrayFalseAnswers
     }
@@ -150,8 +151,16 @@ class GameViewController: UIViewController {
         questions.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
     }
     
+    /// viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        switch orderOfQuestions {
+        case .inSeries:
+            questionSelectionStrategy = SeriesQuestionSelection()
+        case .random:
+            questionSelectionStrategy = RandomQuestionSelection()
+        }
         
         addQuestions()
         startGame()

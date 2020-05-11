@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E4E798C2469E70700A64ABB /* QuestionSelectionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */; };
 		8EA415F2246495C000E1DC22 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA415F1246495BF00E1DC22 /* Question.swift */; };
 		8EA415F424649E5C00E1DC22 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA415F324649E5C00E1DC22 /* GameViewController.swift */; };
 		8EA415F624656FF200E1DC22 /* GameSingletone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA415F524656FF200E1DC22 /* GameSingletone.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSelectionStrategy.swift; sourceTree = "<group>"; };
 		8EA415F1246495BF00E1DC22 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		8EA415F324649E5C00E1DC22 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		8EA415F524656FF200E1DC22 /* GameSingletone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSingletone.swift; sourceTree = "<group>"; };
@@ -57,6 +59,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8E4E798A2469E51C00A64ABB /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8EA7EE332464915400BA2D74 /* MainViewController.swift */,
+				8EA415F324649E5C00E1DC22 /* GameViewController.swift */,
+				8EA415F924659DDE00E1DC22 /* TableViewController.swift */,
+				8EF83B722469DD7500B1383A /* SettingsViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		8EA7EE13246490C300BA2D74 = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,7 @@
 		8EA7EE1E246490C300BA2D74 /* Millionaire */ = {
 			isa = PBXGroup;
 			children = (
+				8E4E798A2469E51C00A64ABB /* View Controllers */,
 				8EF83B712469D7F800B1383A /* Memento */,
 				8EF83B702469D79800B1383A /* Game */,
 				8EF83B6F2469D78A00B1383A /* Model */,
@@ -85,8 +99,8 @@
 				8EA7EE2A246490C600BA2D74 /* LaunchScreen.storyboard */,
 				8EA7EE2D246490C600BA2D74 /* Info.plist */,
 				8EA7EE25246490C300BA2D74 /* Main.storyboard */,
-				8EA7EE332464915400BA2D74 /* MainViewController.swift */,
 				8EE41A642467005700A7F9F1 /* Helper.swift */,
+				8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */,
 			);
 			path = Millionaire;
 			sourceTree = "<group>";
@@ -105,10 +119,7 @@
 		8EF83B702469D79800B1383A /* Game */ = {
 			isa = PBXGroup;
 			children = (
-				8EA415F324649E5C00E1DC22 /* GameViewController.swift */,
-				8EA415F924659DDE00E1DC22 /* TableViewController.swift */,
 				8EA415FB2465A0A900E1DC22 /* GameSceneDelegate.swift */,
-				8EF83B722469DD7500B1383A /* SettingsViewController.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -199,6 +210,7 @@
 				8EA415F624656FF200E1DC22 /* GameSingletone.swift in Sources */,
 				8EA7EE342464915400BA2D74 /* MainViewController.swift in Sources */,
 				8EF83B6E2469D6D700B1383A /* Settings.swift in Sources */,
+				8E4E798C2469E70700A64ABB /* QuestionSelectionStrategy.swift in Sources */,
 				8EA415FA24659DDE00E1DC22 /* TableViewController.swift in Sources */,
 				8EA415F2246495C000E1DC22 /* Question.swift in Sources */,
 				8EA415F82465706200E1DC22 /* GameSession.swift in Sources */,
