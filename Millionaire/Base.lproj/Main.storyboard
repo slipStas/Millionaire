@@ -7,16 +7,65 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Settings View Controller-->
         <scene sceneID="ah9-P9-mw7">
             <objects>
-                <viewController id="WrI-Oj-LcJ" sceneMemberID="viewController">
+                <viewController id="WrI-Oj-LcJ" customClass="SettingsViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ahy-Ns-ngN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="x0x-qW-4Ww">
+                                <rect key="frame" x="253" y="20" width="145" height="32"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="In series"/>
+                                    <segment title="Random"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generate question strategy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8AJ-S6-gT0">
+                                <rect key="frame" x="16" y="25" width="208.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hUu-Z4-KyH">
+                                <rect key="frame" x="16" y="70.5" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Lpx-c3-3je">
+                                <rect key="frame" x="180.5" y="65.5" width="217.5" height="32"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <segments>
+                                    <segment title="No hints"/>
+                                    <segment title="One time"/>
+                                    <segment title="Infinitely"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hUu-Z4-KyH" firstAttribute="top" secondItem="8AJ-S6-gT0" secondAttribute="bottom" constant="25" id="0aO-gz-bKN"/>
+                            <constraint firstItem="8AJ-S6-gT0" firstAttribute="leading" secondItem="Sqm-JW-6eJ" secondAttribute="leading" constant="16" id="3nc-88-2sv"/>
+                            <constraint firstItem="Lpx-c3-3je" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hUu-Z4-KyH" secondAttribute="trailing" constant="8" id="4lb-u0-LBx"/>
+                            <constraint firstItem="8AJ-S6-gT0" firstAttribute="top" secondItem="Sqm-JW-6eJ" secondAttribute="top" constant="25" id="9EO-ZT-gBf"/>
+                            <constraint firstItem="hUu-Z4-KyH" firstAttribute="leading" secondItem="Sqm-JW-6eJ" secondAttribute="leading" constant="16" id="Ehx-tc-kts"/>
+                            <constraint firstItem="x0x-qW-4Ww" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8AJ-S6-gT0" secondAttribute="trailing" constant="8" id="L0P-nn-A9U"/>
+                            <constraint firstItem="Lpx-c3-3je" firstAttribute="width" secondItem="x0x-qW-4Ww" secondAttribute="width" multiplier="1.5" id="QLv-gw-R6Z"/>
+                            <constraint firstItem="Sqm-JW-6eJ" firstAttribute="trailing" secondItem="Lpx-c3-3je" secondAttribute="trailing" constant="16" id="bHo-K0-CEh"/>
+                            <constraint firstItem="Lpx-c3-3je" firstAttribute="centerY" secondItem="hUu-Z4-KyH" secondAttribute="centerY" id="i2c-Gu-moe"/>
+                            <constraint firstItem="x0x-qW-4Ww" firstAttribute="width" secondItem="ahy-Ns-ngN" secondAttribute="width" multiplier="0.35" id="iM2-2H-s2e"/>
+                            <constraint firstItem="x0x-qW-4Ww" firstAttribute="centerY" secondItem="8AJ-S6-gT0" secondAttribute="centerY" id="rqd-J8-iaC"/>
+                            <constraint firstItem="Sqm-JW-6eJ" firstAttribute="trailing" secondItem="x0x-qW-4Ww" secondAttribute="trailing" constant="16" id="sSO-9S-sWb"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Sqm-JW-6eJ"/>
                     </view>
                     <navigationItem key="navigationItem" id="SQR-Cj-dCI"/>
+                    <connections>
+                        <outlet property="hintsSegmetnControl" destination="Lpx-c3-3je" id="WUB-l0-yg1"/>
+                        <outlet property="questionGenerateStrategySegmentControl" destination="x0x-qW-4Ww" id="La0-7J-OfN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bRT-42-ulO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +102,7 @@
                                                     <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="WrI-Oj-LcJ" kind="show" id="3V2-zW-tlC"/>
+                                                    <segue destination="WrI-Oj-LcJ" kind="push" identifier="settings segue" id="3V2-zW-tlC"/>
                                                 </connections>
                                             </button>
                                         </subviews>

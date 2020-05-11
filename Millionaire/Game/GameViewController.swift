@@ -19,6 +19,9 @@ class GameViewController: UIViewController {
     var countTrueAnswers = 0
     var numberOfQuestion = 0
     
+    public var orderOfQuestions: OrderOfQuestions = .inSeries
+    public var hintsSettings: HintsSettings = .infinitely
+    
     var answer: String = "" {
         didSet {
             if self.checkAnswer() && countTrueAnswers == 14 {
