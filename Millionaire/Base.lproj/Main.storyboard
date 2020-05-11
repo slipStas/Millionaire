@@ -7,6 +7,21 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
+        <scene sceneID="ah9-P9-mw7">
+            <objects>
+                <viewController id="WrI-Oj-LcJ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ahy-Ns-ngN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Sqm-JW-6eJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SQR-Cj-dCI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bRT-42-ulO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1048" y="-585"/>
+        </scene>
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -30,8 +45,22 @@
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xqq-gJ-Dq2">
                                         <rect key="frame" x="0.0" y="48.5" width="181" height="181"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nZ8-ph-6Ic">
+                                                <rect key="frame" x="45.5" y="69.5" width="90" height="42"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                <state key="normal" title="Settings">
+                                                    <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <segue destination="WrI-Oj-LcJ" kind="show" id="3V2-zW-tlC"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Xqq-gJ-Dq2" secondAttribute="height" multiplier="1:1" id="AU5-bd-5hL"/>
+                                            <constraint firstItem="nZ8-ph-6Ic" firstAttribute="centerY" secondItem="Xqq-gJ-Dq2" secondAttribute="centerY" id="NWC-05-P9z"/>
+                                            <constraint firstItem="nZ8-ph-6Ic" firstAttribute="centerX" secondItem="Xqq-gJ-Dq2" secondAttribute="centerX" id="q1e-8W-0rS"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lYM-5X-4vg">
