@@ -41,6 +41,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        questionGenerateStrategySegmentControl.selectedSegmentIndex = Game.shared.orderOfQuestions?.rawValue ?? 0
     }
 }

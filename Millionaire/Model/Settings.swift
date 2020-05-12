@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum OrderOfQuestions {
-    case inSeries
-    case random
+enum OrderOfQuestions: Int {
+    case inSeries = 0
+    case random = 1
 }
 
-enum HintsSettings {
-    case noHints
-    case oneTime
-    case infinitely
+enum HintsSettings: Int {
+    case noHints = 0
+    case oneTime = 1
+    case infinitely = 2
 }
