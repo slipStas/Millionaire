@@ -13,6 +13,8 @@ public class Game {
     
     var gameSession : GameSession?
     
+    var isHint50Used: Bool = true
+    
     var orderOfQuestions: OrderOfQuestions?
     var hintsSettings: HintsSettings?
     

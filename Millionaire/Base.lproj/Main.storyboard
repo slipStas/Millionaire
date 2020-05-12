@@ -48,6 +48,9 @@
                                     <segment title="Infinitely"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="hintsSelected:" destination="WrI-Oj-LcJ" eventType="valueChanged" id="zh6-h9-n8j"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <constraints>
