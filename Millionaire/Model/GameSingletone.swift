@@ -29,7 +29,11 @@ public class Game {
     var isHallHelpUsed : HintsUsed?
     
     var orderOfQuestions: OrderOfQuestions?
-    var hintsSettings: HintsSettings?
+    var hintsSettings: HintsSettings? {
+        didSet {
+            print(self.hintsSettings.debugDescription)
+        }
+    }
     
     private init() {}
 }

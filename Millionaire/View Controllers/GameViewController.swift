@@ -14,7 +14,7 @@ class GameViewController: UIViewController {
     public weak var gameDelegate: GameSceneDelegate?
     
     public var orderOfQuestions: OrderOfQuestions = Game.shared.orderOfQuestions ?? OrderOfQuestions.inSeries
-    public var hintsSettings: HintsSettings = Game.shared.hintsSettings ?? HintsSettings.infinitely
+    public var hintsSettings: HintsSettings = Game.shared.hintsSettings ?? HintsSettings.noHints
     
     var questionSelectionStrategy: QuestionSelectionStrategy?
     var hintsOptionsStrategy: HintOptionsStrategy?
@@ -68,10 +68,10 @@ class GameViewController: UIViewController {
     @IBOutlet weak var buttonD: UIButton!
     
     @IBOutlet weak var help50Button: UIButton!
-    
     @IBOutlet weak var callFriendButton: UIButton!
-    @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var hallHelpButton: UIButton!
+    
+    @IBOutlet weak var questionLabel: UILabel!
     
     @IBAction func pressedButton(_ sender: UIButton) {
         guard var answer = sender.titleLabel?.text else {return}
@@ -88,12 +88,10 @@ class GameViewController: UIViewController {
     @IBAction func callFriend(_ sender: Any) {
         print("calling friend")
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.callFriendButton)
-
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.hallHelpButton)
-
     }
     
     
@@ -169,14 +167,6 @@ class GameViewController: UIViewController {
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        Game.shared.isHint50Used = HintsUsed()
-        Game.shared.isFriendCallUsed = HintsUsed()
-        Game.shared.isHallHelpUsed = HintsUsed()
-        
-        Game.shared.isHint50Used?.hint = false
-        Game.shared.isFriendCallUsed?.hint = false
-        Game.shared.isHallHelpUsed?.hint = false
         
         switch orderOfQuestions {
         case .inSeries:

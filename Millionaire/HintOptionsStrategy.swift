@@ -9,68 +9,65 @@
 import UIKit
 
 protocol HintOptionsStrategy {
-    func hintOptionsByTap(button: inout UIButton)
     func hintOptionsViewDidLoad(button: inout UIButton)
+    func hintOptionsByTap(button: inout UIButton)
 }
 
 struct NoHintsStrategy: HintOptionsStrategy {
     func hintOptionsViewDidLoad(button: inout UIButton) {
-        switch button.titleLabel?.text {
-        case "help50":
-            button.isEnabled = Game.shared.isHint50Used?.hint ?? false
-        case "callFriend":
-            button.isEnabled = Game.shared.isFriendCallUsed?.hint ?? false
-        case "hallHelp":
-            button.isEnabled = Game.shared.isHallHelpUsed?.hint ?? false
-        default:
-            break
-        }
-        //button.isEnabled = Game.shared.isHint50Used?.hint ?? false
+        
+        button.isEnabled = false
     }
     
     func hintOptionsByTap(button: inout UIButton) {
-        switch button.titleLabel?.text {
-        case "help50":
-            button.isEnabled = Game.shared.isHint50Used?.hint ?? false
-        case "callFriend":
-            button.isEnabled = Game.shared.isFriendCallUsed?.hint ?? false
-        case "hallHelp":
-            button.isEnabled = Game.shared.isHallHelpUsed?.hint ?? false
-        default:
-            break
-        }
-        //button.isEnabled = Game.shared.isHint50Used?.hint ?? false
+        print("can't tap the disable button")
+//        guard let isHint50 = Game.shared.isHint50Used?.hint,
+//            let isFriendHint = Game.shared.isFriendCallUsed?.hint,
+//            let isHallHint = Game.shared.isHallHelpUsed?.hint else {return}
+//
+//        switch button.backgroundImage(for: .normal) {
+//        case UIImage(named: "50_50"):
+//            button.isEnabled = !isHint50
+//        case UIImage(named: "telephone"):
+//            button.isEnabled = !isFriendHint
+//        case UIImage(named: "people"):
+//            button.isEnabled = !isHallHint
+//        default:
+//            break
+//        }
     }
 }
 
 struct OneTimeHintsStrategy: HintOptionsStrategy {
+    
     func hintOptionsViewDidLoad(button: inout UIButton) {
-        switch button.titleLabel?.text {
-        case "help50":
-            button.isEnabled = Game.shared.isHint50Used?.hint ?? false
-        case "callFriend":
-            button.isEnabled = Game.shared.isFriendCallUsed?.hint ?? false
-        case "hallHelp":
-            button.isEnabled = Game.shared.isHallHelpUsed?.hint ?? false
+        guard let isHint50 = Game.shared.isHint50Used?.hint,
+        let isFriendHint = Game.shared.isFriendCallUsed?.hint,
+        let isHallHint = Game.shared.isHallHelpUsed?.hint else {return}
+
+        switch button.backgroundImage(for: .normal) {
+        case UIImage(named: "50_50"):
+            button.isEnabled = !isHint50
+        case UIImage(named: "telephone"):
+            button.isEnabled = !isFriendHint
+        case UIImage(named: "people"):
+            button.isEnabled = !isHallHint
         default:
             break
         }
-        //button.isEnabled = Game.shared.isHint50Used?.hint ?? false
     }
     
     func hintOptionsByTap(button: inout UIButton) {
-        switch button.titleLabel?.text {
-        case "help50":
+        switch button.backgroundImage(for: .normal) {
+        case UIImage(named: "50_50"):
             Game.shared.isHint50Used?.hint = false
-        case "callFriend":
+        case UIImage(named: "telephone"):
             Game.shared.isFriendCallUsed?.hint = false
-        case "hallHelp":
+        case UIImage(named: "people"):
             Game.shared.isHallHelpUsed?.hint = false
         default:
             break
         }
-        
-        //Game.shared.isHint50Used?.hint = false
         button.isEnabled = false
     }
 }
