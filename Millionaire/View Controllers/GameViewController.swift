@@ -69,7 +69,9 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var help50Button: UIButton!
     
+    @IBOutlet weak var callFriendButton: UIButton!
     @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var hallHelpButton: UIButton!
     
     @IBAction func pressedButton(_ sender: UIButton) {
         guard var answer = sender.titleLabel?.text else {return}
@@ -82,6 +84,18 @@ class GameViewController: UIViewController {
         }
         self.answer = answer
     }
+    
+    @IBAction func callFriend(_ sender: Any) {
+        print("calling friend")
+        hintsOptionsStrategy?.hintOptionsByTap(button: &self.callFriendButton)
+
+    }
+    @IBAction func hallHelp(_ sender: Any) {
+        print("helping hall")
+        hintsOptionsStrategy?.hintOptionsByTap(button: &self.hallHelpButton)
+
+    }
+    
     
     @IBAction func help50(_ sender: Any) {
         guard let falseAnswers = useHelp50() else {return}
@@ -102,6 +116,9 @@ class GameViewController: UIViewController {
     func startGame() {
         selectedQuestion = questionSelectionStrategy?.selectionQuestions(questionArray: &questions, number: &numberOfQuestion).0
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.help50Button)
+        hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.callFriendButton)
+        hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.hallHelpButton)
+
         
         self.questionLabel.text = selectedQuestion?.question
         
@@ -153,7 +170,13 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Game.shared.isHint50Used = true
+        Game.shared.isHint50Used = HintsUsed()
+        Game.shared.isFriendCallUsed = HintsUsed()
+        Game.shared.isHallHelpUsed = HintsUsed()
+        
+        Game.shared.isHint50Used?.hint = false
+        Game.shared.isFriendCallUsed?.hint = false
+        Game.shared.isHallHelpUsed?.hint = false
         
         switch orderOfQuestions {
         case .inSeries:

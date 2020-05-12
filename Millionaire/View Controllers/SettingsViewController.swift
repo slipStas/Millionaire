@@ -28,13 +28,28 @@ class SettingsViewController: UIViewController {
         switch hintsSegmetnControl.selectedSegmentIndex {
         case 0:
             Game.shared.hintsSettings = .noHints
-            Game.shared.isHint50Used = false
+            Game.shared.isHint50Used?.hint = true
+            Game.shared.isHint50Used?.hintUsed = .isHint50Used
+            Game.shared.isFriendCallUsed?.hint = true
+            Game.shared.isFriendCallUsed?.hintUsed = .isFriendCallUsed
+            Game.shared.isHallHelpUsed?.hint = true
+            Game.shared.isHallHelpUsed?.hintUsed = .isHallHelpUsed
         case 1:
             Game.shared.hintsSettings = .oneTime
-            Game.shared.isHint50Used = true
+            Game.shared.isHint50Used?.hint = true
+            Game.shared.isHint50Used?.hintUsed = .isHint50Used
+            Game.shared.isFriendCallUsed?.hint = true
+            Game.shared.isFriendCallUsed?.hintUsed = .isHint50Used
+            Game.shared.isHallHelpUsed?.hint = true
+            Game.shared.isHallHelpUsed?.hintUsed = .isHint50Used
         case 2:
             Game.shared.hintsSettings = .infinitely
-            Game.shared.isHint50Used = true
+            Game.shared.isHint50Used?.hint = true
+            Game.shared.isHint50Used?.hintUsed = .isHint50Used
+            Game.shared.isFriendCallUsed?.hint = true
+            Game.shared.isFriendCallUsed?.hintUsed = .isHint50Used
+            Game.shared.isHallHelpUsed?.hint = true
+            Game.shared.isHallHelpUsed?.hintUsed = .isHint50Used
         default:
             break
         }
