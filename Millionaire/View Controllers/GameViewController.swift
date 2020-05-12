@@ -90,8 +90,6 @@ class GameViewController: UIViewController {
         }
         addTitileToButtons()
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.help50Button)
-        
-        //self.help50Button.isEnabled = false
     }
     
     func addTitileToButtons() {
@@ -108,8 +106,6 @@ class GameViewController: UIViewController {
         self.questionLabel.text = selectedQuestion?.question
         
         addTitileToButtons()
-        //self.help50Button.isEnabled = true
-        
     }
     
     func checkAnswer() -> Bool {
