@@ -24,7 +24,7 @@ class GameViewController: UIViewController {
     var countTrueAnswers = MyObservable(countTrueAnswers: 0)
     var numberOfQuestion = 0
     var observer: NSKeyValueObservation?
-    var labelsPriceArray: [UILabel] = []
+    var labelsPriceArray: [UIButton] = []
     
     var answer: String = "" {
         didSet {
@@ -64,21 +64,21 @@ class GameViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var question1PriceLabel: UILabel!
-    @IBOutlet weak var question2PriceLabel: UILabel!
-    @IBOutlet weak var question3PriceLabel: UILabel!
-    @IBOutlet weak var question4PriceLabel: UILabel!
-    @IBOutlet weak var question5PriceLabel: UILabel!
-    @IBOutlet weak var question6PriceLabel: UILabel!
-    @IBOutlet weak var question7PriceLabel: UILabel!
-    @IBOutlet weak var question8PriceLabel: UILabel!
-    @IBOutlet weak var question9PriceLabel: UILabel!
-    @IBOutlet weak var question10PriceLabel: UILabel!
-    @IBOutlet weak var question11PriceLabel: UILabel!
-    @IBOutlet weak var question12PriceLabel: UILabel!
-    @IBOutlet weak var question13PriceLabel: UILabel!
-    @IBOutlet weak var question14PriceLabel: UILabel!
-    @IBOutlet weak var question15PriceLabel: UILabel!
+    @IBOutlet weak var question1PriceLabel: UIButton!
+    @IBOutlet weak var question2PriceLabel: UIButton!
+    @IBOutlet weak var question3PriceLabel: UIButton!
+    @IBOutlet weak var question4PriceLabel: UIButton!
+    @IBOutlet weak var question5PriceLabel: UIButton!
+    @IBOutlet weak var question6PriceLabel: UIButton!
+    @IBOutlet weak var question7PriceLabel: UIButton!
+    @IBOutlet weak var question8PriceLabel: UIButton!
+    @IBOutlet weak var question9PriceLabel: UIButton!
+    @IBOutlet weak var question10PriceLabel: UIButton!
+    @IBOutlet weak var question11PriceLabel: UIButton!
+    @IBOutlet weak var question12PriceLabel: UIButton!
+    @IBOutlet weak var question13PriceLabel: UIButton!
+    @IBOutlet weak var question14PriceLabel: UIButton!
+    @IBOutlet weak var question15PriceLabel: UIButton!
     
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -186,47 +186,51 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        question1PriceLabel.text = "100"
-        question2PriceLabel.text = "200"
-        question3PriceLabel.text = "300"
-        question4PriceLabel.text = "500"
-        question5PriceLabel.text = "1,000"
-        question6PriceLabel.text = "2,000"
-        question7PriceLabel.text = "4,000"
-        question8PriceLabel.text = "8,000"
-        question9PriceLabel.text = "16,000"
-        question10PriceLabel.text = "32,000"
-        question11PriceLabel.text = "64,000"
-        question12PriceLabel.text = "125,000"
-        question13PriceLabel.text = "250,000"
-        question14PriceLabel.text = "500,000"
-        question15PriceLabel.text = "1,000,000"
+        question1PriceLabel.setTitle("100", for: .normal)
+        question2PriceLabel.setTitle("200", for: .normal)
+        question3PriceLabel.setTitle("300", for: .normal)
+        question4PriceLabel.setTitle("500", for: .normal)
+        question5PriceLabel.setTitle("1,000", for: .normal)
+        question6PriceLabel.setTitle("2,000", for: .normal)
+        question7PriceLabel.setTitle("4,000", for: .normal)
+        question8PriceLabel.setTitle("8,000", for: .normal)
+        question9PriceLabel.setTitle("16,000", for: .normal)
+        question10PriceLabel.setTitle("32,000", for: .normal)
+        question11PriceLabel.setTitle("64,000", for: .normal)
+        question12PriceLabel.setTitle("125,000", for: .normal)
+        question13PriceLabel.setTitle("250,000", for: .normal)
+        question14PriceLabel.setTitle("500,000", for: .normal)
+        question15PriceLabel.setTitle("1,000,000", for: .normal)
         
-        question1PriceLabel.backgroundColor = .lightGray
-        question2PriceLabel.backgroundColor = .lightGray
-        question3PriceLabel.backgroundColor = .lightGray
-        question4PriceLabel.backgroundColor = .lightGray
-        question5PriceLabel.backgroundColor = .lightGray
-        question6PriceLabel.backgroundColor = .lightGray
-        question7PriceLabel.backgroundColor = .lightGray
-        question8PriceLabel.backgroundColor = .lightGray
-        question9PriceLabel.backgroundColor = .lightGray
-        question10PriceLabel.backgroundColor = .lightGray
-        question11PriceLabel.backgroundColor = .lightGray
-        question12PriceLabel.backgroundColor = .lightGray
-        question13PriceLabel.backgroundColor = .lightGray
-        question14PriceLabel.backgroundColor = .lightGray
-        question15PriceLabel.backgroundColor = .lightGray
+        question1PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question2PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question3PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question4PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question5PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question6PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question7PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question8PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question9PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question10PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question11PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question12PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question13PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question14PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+        question15PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
         
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
-        labelsPriceArray.first?.backgroundColor = .orange
+        labelsPriceArray.first?.setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
+        labelsPriceArray.first?.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
         
         observer = {
             countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
                 if let newValue = change.newValue, newValue > 0, newValue < 15 {
-                    self.labelsPriceArray[newValue - 1].backgroundColor = .green
-                    self.labelsPriceArray[newValue].backgroundColor = .orange
+                    self.labelsPriceArray[newValue - 1].setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                    self.labelsPriceArray[newValue - 1].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 20)
+                    self.labelsPriceArray[newValue].setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
+                    self.labelsPriceArray[newValue].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
+
 
                 }
                 print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")

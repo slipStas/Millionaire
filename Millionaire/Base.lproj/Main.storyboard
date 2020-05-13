@@ -355,157 +355,172 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="giL-p1-1Fx">
                                 <rect key="frame" x="16" y="124" width="220" height="550"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uc-bz-QJN">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCX-sF-SKa">
                                         <rect key="frame" x="0.0" y="0.0" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="6uc-bz-QJN" secondAttribute="height" multiplier="6:1" id="Zzc-kH-fZr"/>
+                                            <constraint firstAttribute="width" secondItem="ZCX-sF-SKa" secondAttribute="height" multiplier="6:1" id="RXP-Bc-Rou"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9Z-Pi-tOh">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="agv-HE-Es8">
                                         <rect key="frame" x="0.0" y="36.5" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="V9Z-Pi-tOh" secondAttribute="height" multiplier="6:1" id="Zby-HM-Y3w"/>
+                                            <constraint firstAttribute="width" secondItem="agv-HE-Es8" secondAttribute="height" multiplier="6:1" id="Jfo-9b-aFM"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IgD-Vz-UlN">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lkm-T0-xX7">
                                         <rect key="frame" x="0.0" y="73" width="220" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="IgD-Vz-UlN" secondAttribute="height" multiplier="6:1" id="C1o-su-dLh"/>
+                                            <constraint firstAttribute="width" secondItem="lkm-T0-xX7" secondAttribute="height" multiplier="6:1" id="cDJ-8r-Pss"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bih-xI-T2U">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8zJ-n8-oei">
                                         <rect key="frame" x="0.0" y="110" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="bih-xI-T2U" secondAttribute="height" multiplier="6:1" id="m26-sF-LlC"/>
+                                            <constraint firstAttribute="width" secondItem="8zJ-n8-oei" secondAttribute="height" multiplier="6:1" id="Q8X-IJ-kFT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SY2-0L-BQn">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pxs-1U-UgP">
                                         <rect key="frame" x="0.0" y="146.5" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="SY2-0L-BQn" secondAttribute="height" multiplier="6:1" id="f57-LK-0k6"/>
+                                            <constraint firstAttribute="width" secondItem="Pxs-1U-UgP" secondAttribute="height" multiplier="6:1" id="9Bv-zN-7Mj"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PfG-AZ-oTr">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YVm-OV-4XK">
                                         <rect key="frame" x="0.0" y="183" width="220" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="PfG-AZ-oTr" secondAttribute="height" multiplier="6:1" id="fW9-37-RyD"/>
+                                            <constraint firstAttribute="width" secondItem="YVm-OV-4XK" secondAttribute="height" multiplier="6:1" id="OVR-1b-30W"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FH4-rB-umC">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Md9-Pr-XZL">
                                         <rect key="frame" x="0.0" y="220" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="FH4-rB-umC" secondAttribute="height" multiplier="6:1" id="SMD-G4-sJD"/>
+                                            <constraint firstAttribute="width" secondItem="Md9-Pr-XZL" secondAttribute="height" multiplier="6:1" id="tYo-Po-D1y"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j2e-xG-xKm">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YHh-oM-38p">
                                         <rect key="frame" x="0.0" y="256.5" width="220" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="j2e-xG-xKm" secondAttribute="height" multiplier="6:1" id="Dun-Gq-Zda"/>
+                                            <constraint firstAttribute="width" secondItem="YHh-oM-38p" secondAttribute="height" multiplier="6:1" id="Byu-Bc-9RH"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tTb-qB-BRV">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kRJ-b1-Eqc">
                                         <rect key="frame" x="0.0" y="293.5" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="tTb-qB-BRV" secondAttribute="height" multiplier="6:1" id="lNj-Xf-ZwO"/>
+                                            <constraint firstAttribute="width" secondItem="kRJ-b1-Eqc" secondAttribute="height" multiplier="6:1" id="0BI-xT-PtW"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d5P-Yc-L0b">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GhF-Nt-NHc">
                                         <rect key="frame" x="0.0" y="330" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="d5P-Yc-L0b" secondAttribute="height" multiplier="6:1" id="ezW-wD-QP9"/>
+                                            <constraint firstAttribute="width" secondItem="GhF-Nt-NHc" secondAttribute="height" multiplier="6:1" id="oTh-fg-1BP"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UX7-0V-yOC">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RlL-xo-xB2">
                                         <rect key="frame" x="0.0" y="366.5" width="220" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="UX7-0V-yOC" secondAttribute="height" multiplier="6:1" id="EAa-In-Hib"/>
+                                            <constraint firstAttribute="width" secondItem="RlL-xo-xB2" secondAttribute="height" multiplier="6:1" id="iZh-nx-VZI"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N8B-My-xsD">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LTZ-QG-azE">
                                         <rect key="frame" x="0.0" y="403.5" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="N8B-My-xsD" secondAttribute="height" multiplier="6:1" id="ir0-PJ-yUM"/>
+                                            <constraint firstAttribute="width" secondItem="LTZ-QG-azE" secondAttribute="height" multiplier="6:1" id="n5I-JK-zrg"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EDZ-J9-GuW">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ob6-Gx-uiQ">
                                         <rect key="frame" x="0.0" y="440" width="220" height="37"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="EDZ-J9-GuW" secondAttribute="height" multiplier="6:1" id="OVv-ol-hOb"/>
+                                            <constraint firstAttribute="width" secondItem="ob6-Gx-uiQ" secondAttribute="height" multiplier="6:1" id="9NE-8v-Y4U"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sPd-VD-Zdo">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnS-Gf-dMZ">
                                         <rect key="frame" x="0.0" y="477" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="sPd-VD-Zdo" secondAttribute="height" multiplier="6:1" id="zTO-t0-Gkk"/>
+                                            <constraint firstAttribute="width" secondItem="hnS-Gf-dMZ" secondAttribute="height" multiplier="6:1" id="cx9-r6-QB0"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sla-2R-7Po">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVc-tQ-9qr">
                                         <rect key="frame" x="0.0" y="513.5" width="220" height="36.5"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="Sla-2R-7Po" secondAttribute="height" multiplier="6:1" id="N6a-YB-9Hw"/>
+                                            <constraint firstAttribute="width" secondItem="sVc-tQ-9qr" secondAttribute="height" multiplier="6:1" id="dFK-2Z-8ty"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="d5P-Yc-L0b" firstAttribute="width" secondItem="d5P-Yc-L0b" secondAttribute="height" multiplier="6:1" id="6PP-F4-vTt"/>
-                                    <constraint firstItem="EDZ-J9-GuW" firstAttribute="width" secondItem="EDZ-J9-GuW" secondAttribute="height" multiplier="6:1" id="E8h-I1-Dl0"/>
-                                    <constraint firstItem="UX7-0V-yOC" firstAttribute="width" secondItem="UX7-0V-yOC" secondAttribute="height" multiplier="6:1" id="H36-pQ-M1C"/>
-                                    <constraint firstItem="PfG-AZ-oTr" firstAttribute="width" secondItem="PfG-AZ-oTr" secondAttribute="height" multiplier="6:1" id="H54-Vq-Gkw"/>
-                                    <constraint firstItem="Sla-2R-7Po" firstAttribute="width" secondItem="Sla-2R-7Po" secondAttribute="height" multiplier="6:1" id="JaY-8u-dkA"/>
-                                    <constraint firstItem="bih-xI-T2U" firstAttribute="width" secondItem="bih-xI-T2U" secondAttribute="height" multiplier="6:1" id="bis-9q-PWC"/>
-                                    <constraint firstItem="SY2-0L-BQn" firstAttribute="width" secondItem="SY2-0L-BQn" secondAttribute="height" multiplier="6:1" id="f9n-UV-Ie3"/>
-                                    <constraint firstItem="sPd-VD-Zdo" firstAttribute="width" secondItem="sPd-VD-Zdo" secondAttribute="height" multiplier="6:1" id="ic1-6J-yBf"/>
-                                    <constraint firstItem="FH4-rB-umC" firstAttribute="width" secondItem="FH4-rB-umC" secondAttribute="height" multiplier="6:1" id="k5P-8U-iem"/>
-                                    <constraint firstItem="N8B-My-xsD" firstAttribute="width" secondItem="N8B-My-xsD" secondAttribute="height" multiplier="6:1" id="kXH-jT-RBa"/>
-                                    <constraint firstItem="j2e-xG-xKm" firstAttribute="width" secondItem="j2e-xG-xKm" secondAttribute="height" multiplier="6:1" id="o7c-tm-H4D"/>
-                                    <constraint firstItem="V9Z-Pi-tOh" firstAttribute="width" secondItem="V9Z-Pi-tOh" secondAttribute="height" multiplier="6:1" id="v59-Nq-Ck1"/>
-                                    <constraint firstItem="IgD-Vz-UlN" firstAttribute="width" secondItem="IgD-Vz-UlN" secondAttribute="height" multiplier="6:1" id="wAT-zU-VKg"/>
-                                    <constraint firstItem="tTb-qB-BRV" firstAttribute="width" secondItem="tTb-qB-BRV" secondAttribute="height" multiplier="6:1" id="wPo-i3-DvL"/>
+                                    <constraint firstItem="YVm-OV-4XK" firstAttribute="width" secondItem="YVm-OV-4XK" secondAttribute="height" multiplier="6:1" id="55E-R1-h8b"/>
+                                    <constraint firstItem="agv-HE-Es8" firstAttribute="width" secondItem="agv-HE-Es8" secondAttribute="height" multiplier="6:1" id="CNT-Hj-utp"/>
+                                    <constraint firstItem="8zJ-n8-oei" firstAttribute="width" secondItem="8zJ-n8-oei" secondAttribute="height" multiplier="6:1" id="D7u-iY-Wkh"/>
+                                    <constraint firstItem="LTZ-QG-azE" firstAttribute="width" secondItem="LTZ-QG-azE" secondAttribute="height" multiplier="6:1" id="GwV-72-GUY"/>
+                                    <constraint firstItem="Pxs-1U-UgP" firstAttribute="width" secondItem="Pxs-1U-UgP" secondAttribute="height" multiplier="6:1" id="I74-q1-MR7"/>
+                                    <constraint firstItem="kRJ-b1-Eqc" firstAttribute="width" secondItem="kRJ-b1-Eqc" secondAttribute="height" multiplier="6:1" id="K12-yn-ENk"/>
+                                    <constraint firstItem="sVc-tQ-9qr" firstAttribute="width" secondItem="sVc-tQ-9qr" secondAttribute="height" multiplier="6:1" id="MQB-zA-ee5"/>
+                                    <constraint firstItem="Md9-Pr-XZL" firstAttribute="width" secondItem="Md9-Pr-XZL" secondAttribute="height" multiplier="6:1" id="PML-fV-Ulb"/>
+                                    <constraint firstItem="YHh-oM-38p" firstAttribute="width" secondItem="YHh-oM-38p" secondAttribute="height" multiplier="6:1" id="Rf6-iX-bHe"/>
+                                    <constraint firstItem="GhF-Nt-NHc" firstAttribute="width" secondItem="GhF-Nt-NHc" secondAttribute="height" multiplier="6:1" id="XrP-fe-9H6"/>
+                                    <constraint firstItem="ob6-Gx-uiQ" firstAttribute="width" secondItem="ob6-Gx-uiQ" secondAttribute="height" multiplier="6:1" id="YZG-VI-OQt"/>
+                                    <constraint firstItem="RlL-xo-xB2" firstAttribute="width" secondItem="RlL-xo-xB2" secondAttribute="height" multiplier="6:1" id="clj-Fd-tIv"/>
+                                    <constraint firstItem="hnS-Gf-dMZ" firstAttribute="width" secondItem="hnS-Gf-dMZ" secondAttribute="height" multiplier="6:1" id="fV3-2H-7nq"/>
+                                    <constraint firstItem="lkm-T0-xX7" firstAttribute="width" secondItem="lkm-T0-xX7" secondAttribute="height" multiplier="6:1" id="gl9-Hw-vCh"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -539,21 +554,21 @@
                         <outlet property="callFriendButton" destination="fou-xt-6Fm" id="Bq0-w6-wwD"/>
                         <outlet property="hallHelpButton" destination="6dj-Hk-4zV" id="IFw-TU-zjQ"/>
                         <outlet property="help50Button" destination="QLE-Wi-LqZ" id="zdn-Pd-em1"/>
-                        <outlet property="question10PriceLabel" destination="PfG-AZ-oTr" id="sL2-80-1gN"/>
-                        <outlet property="question11PriceLabel" destination="SY2-0L-BQn" id="4Qp-Tg-A4f"/>
-                        <outlet property="question12PriceLabel" destination="bih-xI-T2U" id="beV-ye-Xln"/>
-                        <outlet property="question13PriceLabel" destination="IgD-Vz-UlN" id="hVH-Jj-7iw"/>
-                        <outlet property="question14PriceLabel" destination="V9Z-Pi-tOh" id="hCW-jb-vG8"/>
-                        <outlet property="question15PriceLabel" destination="6uc-bz-QJN" id="Zie-hA-cy7"/>
-                        <outlet property="question1PriceLabel" destination="Sla-2R-7Po" id="t8k-Vl-CzC"/>
-                        <outlet property="question2PriceLabel" destination="sPd-VD-Zdo" id="V24-dL-OXS"/>
-                        <outlet property="question3PriceLabel" destination="EDZ-J9-GuW" id="N9K-vM-HmI"/>
-                        <outlet property="question4PriceLabel" destination="N8B-My-xsD" id="jZL-vH-eAd"/>
-                        <outlet property="question5PriceLabel" destination="UX7-0V-yOC" id="0Nj-0u-vrK"/>
-                        <outlet property="question6PriceLabel" destination="d5P-Yc-L0b" id="vTN-7u-YtD"/>
-                        <outlet property="question7PriceLabel" destination="tTb-qB-BRV" id="a4O-AM-VXy"/>
-                        <outlet property="question8PriceLabel" destination="j2e-xG-xKm" id="Cb0-YX-aDs"/>
-                        <outlet property="question9PriceLabel" destination="FH4-rB-umC" id="62L-m9-3JZ"/>
+                        <outlet property="question10PriceLabel" destination="YVm-OV-4XK" id="Jti-BQ-eLE"/>
+                        <outlet property="question11PriceLabel" destination="Pxs-1U-UgP" id="qru-I6-bJZ"/>
+                        <outlet property="question12PriceLabel" destination="8zJ-n8-oei" id="XDl-sb-5Ot"/>
+                        <outlet property="question13PriceLabel" destination="lkm-T0-xX7" id="Od0-Lg-MWs"/>
+                        <outlet property="question14PriceLabel" destination="agv-HE-Es8" id="UqY-xV-UVx"/>
+                        <outlet property="question15PriceLabel" destination="ZCX-sF-SKa" id="FS0-6l-C7i"/>
+                        <outlet property="question1PriceLabel" destination="sVc-tQ-9qr" id="9d7-Kf-lGK"/>
+                        <outlet property="question2PriceLabel" destination="hnS-Gf-dMZ" id="2a6-A4-1aK"/>
+                        <outlet property="question3PriceLabel" destination="ob6-Gx-uiQ" id="aYH-eL-pdr"/>
+                        <outlet property="question4PriceLabel" destination="LTZ-QG-azE" id="Wy1-W9-GWs"/>
+                        <outlet property="question5PriceLabel" destination="RlL-xo-xB2" id="Ed4-JJ-LMd"/>
+                        <outlet property="question6PriceLabel" destination="GhF-Nt-NHc" id="azb-7e-uwc"/>
+                        <outlet property="question7PriceLabel" destination="kRJ-b1-Eqc" id="dpK-R3-3XB"/>
+                        <outlet property="question8PriceLabel" destination="YHh-oM-38p" id="3Zq-6o-1Z6"/>
+                        <outlet property="question9PriceLabel" destination="Md9-Pr-XZL" id="kFl-sq-WCC"/>
                         <outlet property="questionLabel" destination="QiO-Cy-jt1" id="cWI-18-4Pf"/>
                     </connections>
                 </viewController>
