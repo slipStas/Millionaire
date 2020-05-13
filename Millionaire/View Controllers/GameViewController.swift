@@ -47,8 +47,6 @@ class GameViewController: UIViewController {
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
-                    print(self.countTrueAnswers.countTrueAnswers)
-
                     self.startGame()
                 }
             } else {
@@ -64,6 +62,22 @@ class GameViewController: UIViewController {
             }
         }
     }
+    
+    @IBOutlet weak var question1PriceLabel: UILabel!
+    @IBOutlet weak var question2PriceLabel: UILabel!
+    @IBOutlet weak var question3PriceLabel: UILabel!
+    @IBOutlet weak var question4PriceLabel: UILabel!
+    @IBOutlet weak var question5PriceLabel: UILabel!
+    @IBOutlet weak var question6PriceLabel: UILabel!
+    @IBOutlet weak var question7PriceLabel: UILabel!
+    @IBOutlet weak var question8PriceLabel: UILabel!
+    @IBOutlet weak var question9PriceLabel: UILabel!
+    @IBOutlet weak var question10PriceLabel: UILabel!
+    @IBOutlet weak var question11PriceLabel: UILabel!
+    @IBOutlet weak var question12PriceLabel: UILabel!
+    @IBOutlet weak var question13PriceLabel: UILabel!
+    @IBOutlet weak var question14PriceLabel: UILabel!
+    @IBOutlet weak var question15PriceLabel: UILabel!
     
     @IBOutlet weak var buttonA: UIButton!
     @IBOutlet weak var buttonB: UIButton!
@@ -172,8 +186,8 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         observer = {
-            countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (object, change) in
-                print("\(change) was change to \(object.countTrueAnswers)")
+            countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
+                print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")
             }
         }()
                 
