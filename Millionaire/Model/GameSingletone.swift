@@ -28,6 +28,7 @@ public class Game {
     var isFriendCallUsed : HintsUsed?
     var isHallHelpUsed : HintsUsed?
     
+    
     var orderOfQuestions: OrderOfQuestions?
     var hintsSettings: HintsSettings? {
         didSet {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8E391598246AA0CF00D085ED /* HintOptionsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E391597246AA0CF00D085ED /* HintOptionsStrategy.swift */; };
+		8E39159A246BD9D300D085ED /* MyObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E391599246BD9D300D085ED /* MyObservable.swift */; };
 		8E4E798C2469E70700A64ABB /* QuestionSelectionStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */; };
 		8EA415F2246495C000E1DC22 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA415F1246495BF00E1DC22 /* Question.swift */; };
 		8EA415F424649E5C00E1DC22 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA415F324649E5C00E1DC22 /* GameViewController.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		8E391597246AA0CF00D085ED /* HintOptionsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintOptionsStrategy.swift; sourceTree = "<group>"; };
+		8E391599246BD9D300D085ED /* MyObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyObservable.swift; sourceTree = "<group>"; };
 		8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionSelectionStrategy.swift; sourceTree = "<group>"; };
 		8EA415F1246495BF00E1DC22 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		8EA415F324649E5C00E1DC22 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				8EE41A642467005700A7F9F1 /* Helper.swift */,
 				8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */,
 				8E391597246AA0CF00D085ED /* HintOptionsStrategy.swift */,
+				8E391599246BD9D300D085ED /* MyObservable.swift */,
 			);
 			path = Millionaire;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				8EA7EE342464915400BA2D74 /* MainViewController.swift in Sources */,
 				8E391598246AA0CF00D085ED /* HintOptionsStrategy.swift in Sources */,
 				8EF83B6E2469D6D700B1383A /* Settings.swift in Sources */,
+				8E39159A246BD9D300D085ED /* MyObservable.swift in Sources */,
 				8E4E798C2469E70700A64ABB /* QuestionSelectionStrategy.swift in Sources */,
 				8EA415FA24659DDE00E1DC22 /* TableViewController.swift in Sources */,
 				8EA415F2246495C000E1DC22 /* Question.swift in Sources */,

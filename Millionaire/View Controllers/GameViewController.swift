@@ -21,12 +21,13 @@ class GameViewController: UIViewController {
     var questions: [Question] = []
     var selectedQuestion: Question?
     var pressedButton: UIButton?
-    var countTrueAnswers = 0
+    var countTrueAnswers = MyObservable(countTrueAnswers: 0)
     var numberOfQuestion = 0
+    var observer: NSKeyValueObservation?
     
     var answer: String = "" {
         didSet {
-            if self.checkAnswer() && countTrueAnswers == 14 {
+            if self.checkAnswer() && countTrueAnswers.countTrueAnswers == questions.count - 1 {
                 UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
@@ -34,8 +35,8 @@ class GameViewController: UIViewController {
                     self.pressedButton?.alpha = 1
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-                    self.countTrueAnswers += 1
-                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
+                    self.countTrueAnswers.countTrueAnswers += 1
+                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
                 }
             } else if self.checkAnswer() {
                 UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
@@ -45,7 +46,9 @@ class GameViewController: UIViewController {
                     self.pressedButton?.alpha = 1
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-                    self.countTrueAnswers += 1
+                    self.countTrueAnswers.countTrueAnswers += 1
+                    print(self.countTrueAnswers.countTrueAnswers)
+
                     self.startGame()
                 }
             } else {
@@ -55,7 +58,7 @@ class GameViewController: UIViewController {
                   self.pressedButton?.alpha = 0
                   self.pressedButton?.alpha = 1
               }) { _ in
-                  self.gameDelegate?.didEndGame(result: self.countTrueAnswers)
+                self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
                   
               }
             }
@@ -168,6 +171,12 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        observer = {
+            countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (object, change) in
+                print("\(change) was change to \(object.countTrueAnswers)")
+            }
+        }()
+                
         switch orderOfQuestions {
         case .inSeries:
             questionSelectionStrategy = SeriesQuestionSelection()
