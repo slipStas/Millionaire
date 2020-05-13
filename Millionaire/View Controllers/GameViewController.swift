@@ -24,6 +24,7 @@ class GameViewController: UIViewController {
     var countTrueAnswers = MyObservable(countTrueAnswers: 0)
     var numberOfQuestion = 0
     var observer: NSKeyValueObservation?
+    var labelsPriceArray: [UILabel] = []
     
     var answer: String = "" {
         didSet {
@@ -185,8 +186,33 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        question1PriceLabel.text = "100"
+        question2PriceLabel.text = "200"
+        question3PriceLabel.text = "300"
+        question4PriceLabel.text = "500"
+        question5PriceLabel.text = "1,000"
+        question6PriceLabel.text = "2,000"
+        question7PriceLabel.text = "4,000"
+        question8PriceLabel.text = "8,000"
+        question9PriceLabel.text = "16,000"
+        question10PriceLabel.text = "32,000"
+        question11PriceLabel.text = "64,000"
+        question12PriceLabel.text = "125,000"
+        question13PriceLabel.text = "250,000"
+        question14PriceLabel.text = "500,000"
+        question15PriceLabel.text = "1,000,000"
+        
+        labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
+        
+        labelsPriceArray.first?.backgroundColor = .orange
+        
         observer = {
             countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
+                if let newValue = change.newValue, newValue > 0, newValue < 15 {
+                    self.labelsPriceArray[newValue - 1].backgroundColor = .green
+                    self.labelsPriceArray[newValue].backgroundColor = .orange
+
+                }
                 print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")
             }
         }()
