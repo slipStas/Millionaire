@@ -226,12 +226,19 @@ class GameViewController: UIViewController {
         observer = {
             countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
                 if let newValue = change.newValue, newValue > 0, newValue < 15 {
-                    self.labelsPriceArray[newValue - 1].setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
-                    self.labelsPriceArray[newValue - 1].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 20)
-                    self.labelsPriceArray[newValue].setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
-                    self.labelsPriceArray[newValue].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
-
-
+                    let titleLabel = self.labelsPriceArray[newValue - 1].titleLabel?.text
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.labelsPriceArray[newValue - 1].transform = CGAffineTransform(translationX: 0, y: -self.question1PriceLabel.frame.height)
+                        self.labelsPriceArray[newValue - 1].setTitle(self.labelsPriceArray[newValue].titleLabel?.text, for: .normal)
+                    }, completion: { (status) in
+                        self.labelsPriceArray[newValue - 1].setTitle(titleLabel, for: .normal)
+                        self.labelsPriceArray[newValue - 1].transform = CGAffineTransform(translationX: 0, y: 0)
+                        self.labelsPriceArray[newValue - 1].setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                        self.labelsPriceArray[newValue - 1].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 20)
+                        self.labelsPriceArray[newValue].setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
+                        self.labelsPriceArray[newValue].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
+                    })
+                    
                 }
                 print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")
             }
