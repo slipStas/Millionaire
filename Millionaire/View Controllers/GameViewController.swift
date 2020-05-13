@@ -202,6 +202,22 @@ class GameViewController: UIViewController {
         question14PriceLabel.text = "500,000"
         question15PriceLabel.text = "1,000,000"
         
+        question1PriceLabel.backgroundColor = .lightGray
+        question2PriceLabel.backgroundColor = .lightGray
+        question3PriceLabel.backgroundColor = .lightGray
+        question4PriceLabel.backgroundColor = .lightGray
+        question5PriceLabel.backgroundColor = .lightGray
+        question6PriceLabel.backgroundColor = .lightGray
+        question7PriceLabel.backgroundColor = .lightGray
+        question8PriceLabel.backgroundColor = .lightGray
+        question9PriceLabel.backgroundColor = .lightGray
+        question10PriceLabel.backgroundColor = .lightGray
+        question11PriceLabel.backgroundColor = .lightGray
+        question12PriceLabel.backgroundColor = .lightGray
+        question13PriceLabel.backgroundColor = .lightGray
+        question14PriceLabel.backgroundColor = .lightGray
+        question15PriceLabel.backgroundColor = .lightGray
+        
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
         labelsPriceArray.first?.backgroundColor = .orange

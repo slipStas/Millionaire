@@ -30,11 +30,7 @@ public class Game {
     
     
     var orderOfQuestions: OrderOfQuestions?
-    var hintsSettings: HintsSettings? {
-        didSet {
-            print(self.hintsSettings.debugDescription)
-        }
-    }
+    var hintsSettings: HintsSettings? 
     
     private init() {}
 }

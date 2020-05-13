@@ -10,8 +10,8 @@ import Foundation
 
 class GameSession: Codable {
     
-    @objc dynamic var date: Date
-    @objc dynamic var value: Int 
+    var date: Date
+    var value: Int 
     
     init(date: Date, value: Int) {
         self.date = date
