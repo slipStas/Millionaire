@@ -156,17 +156,26 @@
                                     <action selector="refreshQuestions:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SRz-JD-oBy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k0i-zL-C9L">
+                                <rect key="frame" x="207" y="54" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
                             <constraint firstItem="OQM-XN-fgz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1J4-sa-k9o"/>
                             <constraint firstItem="seX-sW-utG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="OJb-Fd-koP"/>
+                            <constraint firstItem="k0i-zL-C9L" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OXV-4l-c0a"/>
                             <constraint firstItem="seX-sW-utG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Pp1-MG-mad"/>
                             <constraint firstItem="OQM-XN-fgz" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ZEJ-zM-WE9"/>
+                            <constraint firstItem="k0i-zL-C9L" firstAttribute="top" secondItem="seX-sW-utG" secondAttribute="bottom" constant="8" id="qnd-6a-7AR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uzu-7C-itn"/>
                     <connections>
+                        <outlet property="serverStatusLabel" destination="k0i-zL-C9L" id="qoe-bv-cPB"/>
                         <outlet property="startGameButton" destination="WTD-kg-smY" id="Kce-vv-7l6"/>
                     </connections>
                 </viewController>

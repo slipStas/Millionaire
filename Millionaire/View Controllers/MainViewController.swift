@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     @IBOutlet weak var startGameButton: UIButton!
+    @IBOutlet weak var serverStatusLabel: UILabel!
     
     let getQuestions = GetQuestionsApi()
     var isDataLoad = false
@@ -48,8 +49,12 @@ class MainViewController: UIViewController {
             self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
                 self.startGameButton.isEnabled = true
                 if state {
+                    self.serverStatusLabel.text = "Server is enable ✅"
+                    self.serverStatusLabel.textColor = .green
                     self.isDataLoad = state
                 } else {
+                    self.serverStatusLabel.text = "Server is disable ❌"
+                    self.serverStatusLabel.textColor = .gray
                     self.isDataLoad = state
                     print("Error with data from server")
                     self.addQuestions()
