@@ -134,7 +134,6 @@ class GameViewController: UIViewController {
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.help50Button)
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.callFriendButton)
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.hallHelpButton)
-
         
         self.questionLabel.text = selectedQuestion?.question
         
@@ -182,10 +181,7 @@ class GameViewController: UIViewController {
         questions.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
     }
     
-    //MARK: viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    func setTitlePriceButtons() {
         question1PriceLabel.setTitle("100", for: .normal)
         question2PriceLabel.setTitle("200", for: .normal)
         question3PriceLabel.setTitle("300", for: .normal)
@@ -201,7 +197,9 @@ class GameViewController: UIViewController {
         question13PriceLabel.setTitle("250,000", for: .normal)
         question14PriceLabel.setTitle("500,000", for: .normal)
         question15PriceLabel.setTitle("1,000,000", for: .normal)
-        
+    }
+    
+    func setImagePriceButtons() {
         question1PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
         question2PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
         question3PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
@@ -217,6 +215,14 @@ class GameViewController: UIViewController {
         question13PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
         question14PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
         question15PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+    }
+    
+    //MARK: viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setTitlePriceButtons()
+        setImagePriceButtons()
         
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
@@ -227,18 +233,22 @@ class GameViewController: UIViewController {
             countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
                 if let newValue = change.newValue, newValue > 0, newValue < 15 {
                     let titleLabel = self.labelsPriceArray[newValue - 1].titleLabel?.text
+                    
                     UIView.animate(withDuration: 0.5, animations: {
                         self.labelsPriceArray[newValue - 1].transform = CGAffineTransform(translationX: 0, y: -self.question1PriceLabel.frame.height)
                         self.labelsPriceArray[newValue - 1].setTitle(self.labelsPriceArray[newValue].titleLabel?.text, for: .normal)
                     }, completion: { (status) in
                         self.labelsPriceArray[newValue - 1].setTitle(titleLabel, for: .normal)
-                        self.labelsPriceArray[newValue - 1].transform = CGAffineTransform(translationX: 0, y: 0)
-                        self.labelsPriceArray[newValue - 1].setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
-                        self.labelsPriceArray[newValue - 1].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 20)
-                        self.labelsPriceArray[newValue].setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
-                        self.labelsPriceArray[newValue].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
+                        self.labelsPriceArray[newValue - 1].alpha = 0
+                        UIView.animate(withDuration: 0.1) {
+                            self.labelsPriceArray[newValue - 1].alpha = 1
+                            self.labelsPriceArray[newValue - 1].transform = CGAffineTransform(translationX: 0, y: 0)
+                            self.labelsPriceArray[newValue - 1].setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                            self.labelsPriceArray[newValue - 1].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 20)
+                            self.labelsPriceArray[newValue].setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
+                            self.labelsPriceArray[newValue].titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 30)
+                        }
                     })
-                    
                 }
                 print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")
             }
