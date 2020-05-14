@@ -10,8 +10,33 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let getQuestions = GetQuestionsApi()
+    var isDataLoad = false
+    let difficultyArray : [QuestionDifficulty] = [.hard, .medium, .low]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        difficultyArray.map { (item) in
+            self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
+                if state {
+                    self.isDataLoad = state
+                } else {
+                    self.isDataLoad = state
+                    print("Error with data from server")
+                    
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if let identifier = segue.identifier, identifier == "start game" {
+            if let destinationVC = segue.destination  as? GameViewController {
+                let questions = Game.shared.questionsArray
+                destinationVC.questions = questions
+            }
+        }
     }
 }

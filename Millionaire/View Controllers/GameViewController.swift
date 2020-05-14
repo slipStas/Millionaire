@@ -221,6 +221,9 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //questions = Game.shared.questionsArray
+        print(questions.count)
+        
         setTitlePriceButtons()
         setImagePriceButtons()
         
@@ -270,7 +273,7 @@ class GameViewController: UIViewController {
             hintsOptionsStrategy = InfinitelyHintsStrategy()
         }
         
-        addQuestions()
+        //addQuestions()
         startGame()
         self.gameDelegate = self
 

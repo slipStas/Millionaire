@@ -10,7 +10,7 @@ import Foundation
 
 struct Question {
     
-    let question: String
+    var question: String
     var answers: [String]
-    let trueAnswer: String
+    var trueAnswer: String
 }

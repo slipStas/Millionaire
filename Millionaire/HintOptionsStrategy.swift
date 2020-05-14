@@ -21,20 +21,6 @@ struct NoHintsStrategy: HintOptionsStrategy {
     
     func hintOptionsByTap(button: inout UIButton) {
         print("can't tap the disable button")
-//        guard let isHint50 = Game.shared.isHint50Used?.hint,
-//            let isFriendHint = Game.shared.isFriendCallUsed?.hint,
-//            let isHallHint = Game.shared.isHallHelpUsed?.hint else {return}
-//
-//        switch button.backgroundImage(for: .normal) {
-//        case UIImage(named: "50_50"):
-//            button.isEnabled = !isHint50
-//        case UIImage(named: "telephone"):
-//            button.isEnabled = !isFriendHint
-//        case UIImage(named: "people"):
-//            button.isEnabled = !isHallHint
-//        default:
-//            break
-//        }
     }
 }
 
