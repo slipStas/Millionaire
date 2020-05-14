@@ -12,10 +12,12 @@ class MainViewController: UIViewController {
     
     let getQuestions = GetQuestionsApi()
     var isDataLoad = false
+    var couldGoNextVC = false
     let difficultyArray : [QuestionDifficulty] = [.hard, .medium, .low]
     
     @IBAction func refreshQuestions(_ sender: Any) {
         isDataLoad = false
+        couldGoNextVC = false
         loadQuestions()
     }
     
@@ -31,6 +33,7 @@ class MainViewController: UIViewController {
                 }
             }
         }
+        couldGoNextVC = true
     }
     
     override func viewDidLoad() {
@@ -41,7 +44,7 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if let identifier = segue.identifier, identifier == "start game" {
+        if let identifier = segue.identifier, identifier == "start game", couldGoNextVC {
             if let destinationVC = segue.destination  as? GameViewController {
                 let questions = Game.shared.questionsArray
                 destinationVC.questions = questions
