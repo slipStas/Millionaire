@@ -21,7 +21,6 @@ class GetQuestionsApi {
     var getQuestions: QuestionsApi?
     
     func getQuestions(questionDifficulty difficulty: QuestionDifficulty, completionHandler: @escaping(Bool) -> ()) {
-        
         var urlLiteQuestions = URLComponents()
         urlLiteQuestions.scheme = "https"
         urlLiteQuestions.host = "engine.lifeis.porn"
@@ -34,21 +33,17 @@ class GetQuestionsApi {
         guard let url = urlLiteQuestions.url else {return}
         
         AF.request(url).responseData { response in
-            guard let data = response.data else {
-                completionHandler(false)
-                return }
+            guard let data = response.data else {return completionHandler(false)}
             
             guard let questionsData = try? JSONDecoder().decode(QuestionsApi.self, from: data) else {return completionHandler(false)}
-            
             
             let items = questionsData.data
             
             for i in 0..<items.count {
                 var question = Question(question: "", answers: [], trueAnswer: "")
                 question.question = items[i].question
-                print(items[i].question)
                 question.trueAnswer = items[i].answers.first!
-                
+                /// Mix the answers
                 var answers = Set<String>()
                 items[i].answers.map {answers.insert($0)}
                 

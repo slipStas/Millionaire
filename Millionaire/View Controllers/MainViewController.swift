@@ -45,29 +45,37 @@ class MainViewController: UIViewController {
     }
     
     func loadQuestions() {
-        difficultyArray.map { (item) in
-            self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
-                self.startGameButton.isEnabled = true
-                if state {
-                    self.serverStatusLabel.text = "Server is enable ✅"
-                    self.serverStatusLabel.textColor = .green
-                    self.isDataLoad = state
-                } else {
-                    self.serverStatusLabel.text = "Server is disable ❌"
-                    self.serverStatusLabel.textColor = .gray
-                    self.isDataLoad = state
-                    print("Error with data from server")
-                    self.addQuestions()
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.difficultyArray.map { (item) in
+                self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
+                    sleep(UInt32(1.1))
+                    DispatchQueue.main.async {
+                        if state {
+                            print("true")
+
+                            self.serverStatusLabel.text = "Server is enable ✅"
+                            self.serverStatusLabel.textColor = .green
+                            self.isDataLoad = state
+                            self.startGameButton.isEnabled = true
+                        } else {
+                            self.serverStatusLabel.text = "Server is disable ❌"
+                            self.serverStatusLabel.textColor = .gray
+                            self.isDataLoad = state
+                            print("Error with data from server")
+                            self.addQuestions()
+                        }
+                    }
                 }
             }
+            self.couldGoNextVC = true
         }
-        couldGoNextVC = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         startGameButton.isEnabled = false
+        
         loadQuestions()
     }
     
