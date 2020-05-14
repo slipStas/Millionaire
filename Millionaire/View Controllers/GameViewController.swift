@@ -29,7 +29,7 @@ class GameViewController: UIViewController {
     var answer: String = "" {
         didSet {
             if self.checkAnswer() && countTrueAnswers.countTrueAnswers == questions.count - 1 {
-                UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
                     self.pressedButton?.alpha = 0
@@ -40,7 +40,7 @@ class GameViewController: UIViewController {
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
                 }
             } else if self.checkAnswer() {
-                UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
+                UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
                     UIView.setAnimationRepeatCount(3)
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
                     self.pressedButton?.alpha = 0
@@ -54,14 +54,25 @@ class GameViewController: UIViewController {
                 
                 let buttonsArray = [buttonA, buttonB, buttonC, buttonD]
                 
-                let trueButton = buttonsArray.filter {$0?.titleLabel?.text == self.selectedQuestion?.trueAnswer}.first!
-                UIView.animate(withDuration: 0.07, delay: 0.07, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
+                for button in buttonsArray {
+                    var text = button?.titleLabel?.text
+                    var count = 0
+                    while count < 3 {
+                        text!.removeFirst()
+                        count += 1
+                    }
+                    button?.titleLabel?.text = text
+                }
+                guard let trueButton = buttonsArray.filter({$0?.titleLabel?.text == self.selectedQuestion?.trueAnswer}).first! else {return}
+                
+                UIView.animate(withDuration: 0.09, delay: 0, options: [.autoreverse, .repeat], animations: {
+                    UIView.setAnimationRepeatCount(5)
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundFalse"), for: .normal)
-                    trueButton!.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                    trueButton.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
                     self.pressedButton?.alpha = 0
                     self.pressedButton?.alpha = 1
                 }) { _ in
+                    sleep(2)
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
                     
                 }

@@ -46,29 +46,30 @@ class MainViewController: UIViewController {
     
     func loadQuestions() {
         DispatchQueue.global(qos: .userInteractive).async {
-            self.difficultyArray.map { (item) in
-                self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
-                    sleep(UInt32(1.1))
-                    DispatchQueue.main.async {
-                        if state {
-                            print("true")
-
-                            self.serverStatusLabel.text = "Server is enable ✅"
-                            self.serverStatusLabel.textColor = .green
-                            self.isDataLoad = state
-                            self.startGameButton.isEnabled = true
-                        } else {
-                            self.serverStatusLabel.text = "Server is disable ❌"
-                            self.serverStatusLabel.textColor = .gray
-                            self.isDataLoad = state
-                            print("Error with data from server")
-                            self.addQuestions()
-                        }
-                    }
-                }
-            }
+//            self.difficultyArray.map { (item) in
+//                self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
+//                    sleep(UInt32(1.1))
+//                    DispatchQueue.main.async {
+//                        if state {
+//                            print("add 5 questions")
+//                            self.serverStatusLabel.text = "Server is enable ✅"
+//                            self.serverStatusLabel.textColor = .green
+//                            self.isDataLoad = state
+//                            self.startGameButton.isEnabled = true
+//                        } else {
+//                            self.serverStatusLabel.text = "Server is disable ❌"
+//                            self.serverStatusLabel.textColor = .gray
+//                            self.isDataLoad = state
+//                            print("Error with data from server")
+//                            self.addQuestions()
+//                        }
+//                    }
+//                }
+//            }
+            self.addQuestions()
             self.couldGoNextVC = true
         }
+        self.startGameButton.isEnabled = true
     }
     
     override func viewDidLoad() {
