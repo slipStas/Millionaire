@@ -38,8 +38,9 @@ class GetQuestionsApi {
                 completionHandler(false)
                 return }
             
-            let questionsData = try! JSONDecoder().decode(QuestionsApi.self, from: data)
-                        
+            guard let questionsData = try? JSONDecoder().decode(QuestionsApi.self, from: data) else {return completionHandler(false)}
+            
+            
             let items = questionsData.data
             
             for i in 0..<items.count {

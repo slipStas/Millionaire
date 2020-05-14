@@ -166,6 +166,9 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uzu-7C-itn"/>
+                    <connections>
+                        <outlet property="startGameButton" destination="WTD-kg-smY" id="Kce-vv-7l6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

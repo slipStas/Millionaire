@@ -23,12 +23,10 @@ class QuestionsApi: Codable {
 class Datum: Codable {
     let question: String
     let answers: [String]
-    let id: Int
     
-    init(question: String, answers: [String], id: Int) {
+    init(question: String, answers: [String]) {
         self.question = question
         self.answers = answers
-        self.id = id
     }
 }
 
