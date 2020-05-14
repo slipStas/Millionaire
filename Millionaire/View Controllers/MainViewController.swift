@@ -14,9 +14,12 @@ class MainViewController: UIViewController {
     var isDataLoad = false
     let difficultyArray : [QuestionDifficulty] = [.hard, .medium, .low]
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    @IBAction func refreshQuestions(_ sender: Any) {
+        isDataLoad = false
+        loadQuestions()
+    }
+    
+    func loadQuestions() {
         difficultyArray.map { (item) in
             self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
                 if state {
@@ -28,6 +31,12 @@ class MainViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadQuestions()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -39,9 +39,7 @@ class GetQuestionsApi {
                 return }
             
             let questionsData = try! JSONDecoder().decode(QuestionsApi.self, from: data)
-            
-            //self.getQuestions = questions
-            
+                        
             let items = questionsData.data
             
             for i in 0..<items.count {
