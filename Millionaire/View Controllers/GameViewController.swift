@@ -289,12 +289,12 @@ class GameViewController: UIViewController {
         }
         
         switch hintsSettings {
-        case .noHints:
-            hintsOptionsStrategy = NoHintsStrategy()
-        case .oneTime:
-            hintsOptionsStrategy = OneTimeHintsStrategy()
         case .infinitely:
             hintsOptionsStrategy = InfinitelyHintsStrategy()
+        case .oneTime:
+            hintsOptionsStrategy = OneTimeHintsStrategy()
+        case .noHints:
+            hintsOptionsStrategy = NoHintsStrategy()
         }
         
         startGame()

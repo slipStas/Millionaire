@@ -27,11 +27,11 @@ class SettingsViewController: UIViewController {
     @IBAction func hintsSelected(_ sender: Any) {
         switch hintsSegmetnControl.selectedSegmentIndex {
         case 0:
-            Game.shared.hintsSettings = .noHints
+            Game.shared.hintsSettings = .infinitely
         case 1:
             Game.shared.hintsSettings = .oneTime
         case 2:
-            Game.shared.hintsSettings = .infinitely
+            Game.shared.hintsSettings = .noHints
         default:
             break
         }
@@ -42,6 +42,6 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         questionGenerateStrategySegmentControl.selectedSegmentIndex = Game.shared.orderOfQuestions?.rawValue ?? 0
-        hintsSegmetnControl.selectedSegmentIndex = Game.shared.hintsSettings?.rawValue ?? 3
+        hintsSegmetnControl.selectedSegmentIndex = Game.shared.hintsSettings?.rawValue ?? 0
     }
 }
