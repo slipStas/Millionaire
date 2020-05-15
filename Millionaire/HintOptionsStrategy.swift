@@ -16,7 +16,7 @@ protocol HintOptionsStrategy {
 struct NoHintsStrategy: HintOptionsStrategy {
     func hintOptionsViewDidLoad(button: inout UIButton) {
         
-        button.isEnabled = true
+        button.isEnabled = false
     }
     
     func hintOptionsByTap(button: inout UIButton) {

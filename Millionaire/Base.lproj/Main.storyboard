@@ -43,9 +43,9 @@
                                 <rect key="frame" x="180.5" y="65.5" width="217.5" height="32"/>
                                 <color key="backgroundColor" systemColor="secondarySystemBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <segments>
-                                    <segment title="Infinitely"/>
-                                    <segment title="One time"/>
                                     <segment title="No hits"/>
+                                    <segment title="One time"/>
+                                    <segment title="Infinitely"/>
                                 </segments>
                                 <color key="selectedSegmentTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>

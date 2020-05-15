@@ -46,17 +46,15 @@ class MainViewController: UIViewController {
     func loadQuestions() {
         DispatchQueue.global(qos: .userInteractive).async {
             self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty.child) { (state)  in
-                if state {
-                    print("add 5 questions")
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    if state {
+                        print("add 5 questions")
                         self.serverStatusLabel.text = "Server is enable ✅"
                         self.serverStatusLabel.textColor = .green
                         self.isDataLoad = state
                         self.couldGoNextVC = true
                         self.startGameButton.isEnabled = true
-                    }
-                } else {
-                    DispatchQueue.main.async {
+                    } else {
                         self.serverStatusLabel.text = "Server is disable ❌"
                         self.serverStatusLabel.textColor = .gray
                         self.isDataLoad = state

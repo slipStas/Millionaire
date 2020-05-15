@@ -27,11 +27,11 @@ class SettingsViewController: UIViewController {
     @IBAction func hintsSelected(_ sender: Any) {
         switch hintsSegmetnControl.selectedSegmentIndex {
         case 0:
-            Game.shared.hintsSettings = .infinitely
+            Game.shared.hintsSettings = .noHints
         case 1:
             Game.shared.hintsSettings = .oneTime
         case 2:
-            Game.shared.hintsSettings = .noHints
+            Game.shared.hintsSettings = .infinitely
         default:
             break
         }
