@@ -52,7 +52,6 @@ class GameViewController: UIViewController {
                     self.startGame()
                 }
             } else {
-                
                 let buttonsArray = [buttonA, buttonB, buttonC, buttonD]
                 
                 for button in buttonsArray {
@@ -75,7 +74,6 @@ class GameViewController: UIViewController {
                 }) { _ in
                     sleep(2)
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
-                    
                 }
             }
         }
@@ -299,9 +297,7 @@ class GameViewController: UIViewController {
         
         startGame()
         self.gameDelegate = self
-
     }
-
 }
 
 extension GameViewController: GameSceneDelegate {
@@ -326,7 +322,6 @@ extension GameViewController: GameSceneDelegate {
                 }
             }
         }
-        
         try? GameCaretaker.shared.save(records: records)
     }
 }

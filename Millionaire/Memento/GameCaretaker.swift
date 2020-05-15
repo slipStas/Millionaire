@@ -20,7 +20,6 @@ class GameCaretaker {
     
     func save(records: [GameSession]) throws {
         let data = try JSONEncoder().encode(records)
-        
         try data.write(to: filePath!)
     }
     

@@ -35,7 +35,6 @@ class GetQuestionsApi {
         
         AF.request(url).responseData { response in
             guard let data = response.data else {return completionHandler(false)}
-            
             guard let questionsData = try? JSONDecoder().decode(QuestionsApi.self, from: data) else {return completionHandler(false)}
             
             let items = questionsData.data
