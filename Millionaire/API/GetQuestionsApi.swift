@@ -44,7 +44,7 @@ class GetQuestionsApi {
                 question.trueAnswer = items[i].answers.first!
                 /// Mix the answers
                 var answersSet = Set<String>()
-                items[i].answers.map {answersSet.insert($0)}
+                items[i].answers.forEach {answersSet.insert($0)}
                 
                 question.answers.append(contentsOf: answersSet)
                 

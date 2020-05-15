@@ -6,7 +6,7 @@
 //  Copyright © 2020 Stanislav Slipchenko. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol GameSceneDelegate: AnyObject {
     func didEndGame(result: Int)

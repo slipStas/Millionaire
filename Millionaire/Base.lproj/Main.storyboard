@@ -259,7 +259,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="41.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="Button" backgroundImage="mainBackground">
+                                                <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -273,7 +273,7 @@
                                                     <constraint firstAttribute="width" secondItem="VW4-cm-xPm" secondAttribute="height" multiplier="5:1" id="hM6-eo-QfZ"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="Button" backgroundImage="mainBackground">
+                                                <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -292,7 +292,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="41.5"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="Button" backgroundImage="mainBackground">
+                                                <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -306,7 +306,7 @@
                                                     <constraint firstAttribute="width" secondItem="r3o-Wl-jrc" secondAttribute="height" multiplier="5:1" id="h9J-gN-lcW"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <state key="normal" title="Button" backgroundImage="mainBackground">
+                                                <state key="normal" title="Button">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
@@ -328,7 +328,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="QLE-Wi-LqZ" secondAttribute="height" multiplier="2:1" id="k1w-LF-Gks"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="50_50"/>
+                                        <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="help50:" destination="BM0-0c-ANl" eventType="touchUpInside" id="IQ2-JL-87j"/>
                                         </connections>
@@ -345,7 +345,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="fou-xt-6Fm" secondAttribute="height" multiplier="2:1" id="JVy-Kx-mTK"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="telephone"/>
+                                        <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="callFriend:" destination="BM0-0c-ANl" eventType="touchUpInside" id="VtH-IO-sY8"/>
                                         </connections>
@@ -359,7 +359,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6dj-Hk-4zV" secondAttribute="height" multiplier="2:1" id="BCU-dg-ZjR"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="people"/>
+                                        <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="hallHelp:" destination="BM0-0c-ANl" eventType="touchUpInside" id="jdY-C8-GaX"/>
                                         </connections>
@@ -369,7 +369,7 @@
                                     <constraint firstAttribute="width" secondItem="qSI-SN-mOJ" secondAttribute="height" multiplier="8:1" id="DdD-cL-JUd"/>
                                 </constraints>
                             </stackView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainBackground" translatesAutoresizingMaskIntoConstraints="NO" id="mu0-Ra-NUq">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mu0-Ra-NUq">
                                 <rect key="frame" x="0.0" y="690" width="414" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="Gvj-oa-RCb"/>
@@ -584,6 +584,7 @@
                         <outlet property="callFriendButton" destination="fou-xt-6Fm" id="Bq0-w6-wwD"/>
                         <outlet property="hallHelpButton" destination="6dj-Hk-4zV" id="IFw-TU-zjQ"/>
                         <outlet property="help50Button" destination="QLE-Wi-LqZ" id="zdn-Pd-em1"/>
+                        <outlet property="mainQuestionImageView" destination="mu0-Ra-NUq" id="UYd-lD-6kY"/>
                         <outlet property="question10PriceLabel" destination="YVm-OV-4XK" id="Jti-BQ-eLE"/>
                         <outlet property="question11PriceLabel" destination="Pxs-1U-UgP" id="qru-I6-bJZ"/>
                         <outlet property="question12PriceLabel" destination="8zJ-n8-oei" id="XDl-sb-5Ot"/>
@@ -625,10 +626,4 @@
             <point key="canvasLocation" x="137.68115942028987" y="117.85714285714285"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="50_50" width="200" height="100"/>
-        <image name="mainBackground" width="600" height="90"/>
-        <image name="people" width="200" height="100"/>
-        <image name="telephone" width="200" height="100"/>
-    </resources>
 </document>

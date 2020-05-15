@@ -23,9 +23,9 @@
 		8EA7EE27246490C300BA2D74 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7EE25246490C300BA2D74 /* Main.storyboard */; };
 		8EA7EE29246490C600BA2D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7EE28246490C600BA2D74 /* Assets.xcassets */; };
 		8EA7EE342464915400BA2D74 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7EE332464915400BA2D74 /* MainViewController.swift */; };
-		8EE41A652467005700A7F9F1 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE41A642467005700A7F9F1 /* Helper.swift */; };
 		8EF6BA32246D40840025CD08 /* GetQuestionsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BA31246D40840025CD08 /* GetQuestionsApi.swift */; };
 		8EF6BA34246D40AA0025CD08 /* QuestionsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BA33246D40AA0025CD08 /* QuestionsApi.swift */; };
+		8EF6BA36246F05670025CD08 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BA35246F05660025CD08 /* Extensions.swift */; };
 		8EF83B6E2469D6D700B1383A /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF83B6D2469D6D700B1383A /* Settings.swift */; };
 		8EF83B732469DD7500B1383A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF83B722469DD7500B1383A /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -50,9 +50,9 @@
 		8EA7EE28246490C600BA2D74 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8EA7EE2D246490C600BA2D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EA7EE332464915400BA2D74 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		8EE41A642467005700A7F9F1 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8EF6BA31246D40840025CD08 /* GetQuestionsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsApi.swift; sourceTree = "<group>"; };
 		8EF6BA33246D40AA0025CD08 /* QuestionsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsApi.swift; sourceTree = "<group>"; };
+		8EF6BA35246F05660025CD08 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		8EF83B6D2469D6D700B1383A /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		8EF83B722469DD7500B1383A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F7BD34BCC3AC76FF58E5C094 /* Pods_Millionaire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Millionaire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,7 +112,6 @@
 				8EA7EE28246490C600BA2D74 /* Assets.xcassets */,
 				8EA7EE2D246490C600BA2D74 /* Info.plist */,
 				8EA7EE25246490C300BA2D74 /* Main.storyboard */,
-				8EE41A642467005700A7F9F1 /* Helper.swift */,
 				8E4E798B2469E70700A64ABB /* QuestionSelectionStrategy.swift */,
 				8E391597246AA0CF00D085ED /* HintOptionsStrategy.swift */,
 				8E391599246BD9D300D085ED /* MyObservable.swift */,
@@ -136,6 +135,7 @@
 				8EA415F72465706200E1DC22 /* GameSession.swift */,
 				8EA415F1246495BF00E1DC22 /* Question.swift */,
 				8EF83B6D2469D6D700B1383A /* Settings.swift */,
+				8EF6BA35246F05660025CD08 /* Extensions.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,13 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EE41A652467005700A7F9F1 /* Helper.swift in Sources */,
 				8EA415F424649E5C00E1DC22 /* GameViewController.swift in Sources */,
 				8EA415FC2465A0A900E1DC22 /* GameSceneDelegate.swift in Sources */,
 				8EA415FE2465B47900E1DC22 /* GameCaretaker.swift in Sources */,
 				8EA415F624656FF200E1DC22 /* GameSingletone.swift in Sources */,
 				8EA7EE342464915400BA2D74 /* MainViewController.swift in Sources */,
 				8E391598246AA0CF00D085ED /* HintOptionsStrategy.swift in Sources */,
+				8EF6BA36246F05670025CD08 /* Extensions.swift in Sources */,
 				8EF83B6E2469D6D700B1383A /* Settings.swift in Sources */,
 				8E39159A246BD9D300D085ED /* MyObservable.swift in Sources */,
 				8E4E798C2469E70700A64ABB /* QuestionSelectionStrategy.swift in Sources */,
