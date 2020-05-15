@@ -312,6 +312,20 @@ extension GameViewController: GameSceneDelegate {
         var records = (try? GameCaretaker.shared.load()) ?? []
         let newRecord = GameSession(date: Date(), value: result).self
         records.append(newRecord)
+        Game.shared.questionsArrayChild.removeAll()
+        Game.shared.questionsArrayMedium.removeAll()
+        Game.shared.questionsArrayHard.removeAll()
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.getQuestions.getQuestions(questionDifficulty: .child) { (state) in
+                if state {
+                    print("add 5 questions")
+                    self.questions.append(contentsOf: Game.shared.questionsArrayChild)
+                } else {
+                    print("Error with data from server")
+                }
+            }
+        }
         
         try? GameCaretaker.shared.save(records: records)
     }

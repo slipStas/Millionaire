@@ -18,6 +18,9 @@ class MainViewController: UIViewController {
     var couldGoNextVC = false
     
     @IBAction func refreshQuestions(_ sender: Any) {
+        Game.shared.questionsArrayChild.removeAll()
+        Game.shared.questionsArrayMedium.removeAll()
+        Game.shared.questionsArrayHard.removeAll()
         isDataLoad = false
         couldGoNextVC = false
         loadQuestions()
