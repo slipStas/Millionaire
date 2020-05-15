@@ -53,6 +53,7 @@
                                 </connections>
                             </segmentedControl>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hUu-Z4-KyH" firstAttribute="top" secondItem="8AJ-S6-gT0" secondAttribute="bottom" constant="25" id="0aO-gz-bKN"/>
                             <constraint firstItem="8AJ-S6-gT0" firstAttribute="leading" secondItem="Sqm-JW-6eJ" secondAttribute="leading" constant="16" id="3nc-88-2sv"/>
@@ -97,7 +98,7 @@
                                             <color key="titleColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <segue destination="BM0-0c-ANl" kind="presentation" identifier="start game" id="C9g-T8-ZcO"/>
+                                            <action selector="startGameTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mBq-Nc-MUN"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xqq-gJ-Dq2">
@@ -163,6 +164,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="OQM-XN-fgz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="1J4-sa-k9o"/>
                             <constraint firstItem="seX-sW-utG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="OJb-Fd-koP"/>
@@ -242,7 +244,7 @@
         <!--Game View Controller-->
         <scene sceneID="lh5-gD-LO5">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="BM0-0c-ANl" customClass="GameViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GameVC" modalPresentationStyle="fullScreen" id="BM0-0c-ANl" customClass="GameViewController" customModule="Millionaire" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6tm-dP-lmG">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -551,6 +553,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="giL-p1-1Fx" firstAttribute="top" secondItem="qSI-SN-mOJ" secondAttribute="bottom" constant="16" id="4Om-Rw-5f4"/>
                             <constraint firstItem="QiO-Cy-jt1" firstAttribute="centerX" secondItem="mu0-Ra-NUq" secondAttribute="centerX" id="8la-TK-ya8"/>

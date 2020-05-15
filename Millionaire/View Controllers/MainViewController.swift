@@ -15,15 +15,26 @@ class MainViewController: UIViewController {
     
     let getQuestions = GetQuestionsApi()
     var isDataLoad = false
-    var couldGoNextVC = false
     
     @IBAction func refreshQuestions(_ sender: Any) {
         Game.shared.questionsArrayChild.removeAll()
         Game.shared.questionsArrayMedium.removeAll()
         Game.shared.questionsArrayHard.removeAll()
         isDataLoad = false
-        couldGoNextVC = false
         loadQuestions()
+    }
+    @IBAction func startGameTap(_ sender: Any) {
+        if Game.shared.questionsArrayChild.count > 0 {
+            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+            let newViewController = storyBoard.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
+            self.present(newViewController, animated: true, completion: nil)
+        }
+//        else {
+//            self.loadQuestions()
+//            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
+//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
+//            self.present(newViewController, animated: true, completion: nil)
+//        }
     }
     
     func addQuestions() {
@@ -44,6 +55,7 @@ class MainViewController: UIViewController {
         let question15 = Question(question: " Как на Руси называлась небольшая комната, обычно в верхней части дома?", answers: ["светелка", "горелка", "огневка", "теплушка"], trueAnswer: "светелка")
         
         Game.shared.questionsArrayChild.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
+        print("questions load from device")
     }
     
     func loadQuestions() {
@@ -55,8 +67,6 @@ class MainViewController: UIViewController {
                         self.serverStatusLabel.text = "Server is enable ✅"
                         self.serverStatusLabel.textColor = .green
                         self.isDataLoad = state
-                        self.couldGoNextVC = true
-                        self.startGameButton.isEnabled = true
                     } else {
                         self.serverStatusLabel.text = "Server is disable ❌"
                         self.serverStatusLabel.textColor = .gray
@@ -72,17 +82,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startGameButton.isEnabled = false
-        
         loadQuestions()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let identifier = segue.identifier, identifier == "start game", couldGoNextVC == true {
-            if let destinationVC = segue.destination  as? GameViewController {
-                destinationVC.questions = Game.shared.questionsArrayChild
-            }
-        }
     }
 }

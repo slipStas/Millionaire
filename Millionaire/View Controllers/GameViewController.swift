@@ -13,8 +13,8 @@ class GameViewController: UIViewController {
     /// Game delegate
     public weak var gameDelegate: GameSceneDelegate?
     
-    public var orderOfQuestions: OrderOfQuestions = Game.shared.orderOfQuestions ?? OrderOfQuestions.inSeries
-    public var hintsSettings: HintsSettings = Game.shared.hintsSettings ?? HintsSettings.noHints
+    public var orderOfQuestions: Settings.OrderOfQuestions = Game.shared.orderOfQuestions ?? Settings.OrderOfQuestions.inSeries
+    public var hintsSettings: Settings.HintsSettings = Game.shared.hintsSettings ?? Settings.HintsSettings.noHints
     
     let getQuestions = GetQuestionsApi()
     var questionSelectionStrategy: QuestionSelectionStrategy?
@@ -145,13 +145,13 @@ class GameViewController: UIViewController {
     }
     
     func startGame() {
-        if self.numberOfQuestion == 2 {
+        if self.countTrueAnswers.countTrueAnswers == 2 {
             print("number of question - \(self.numberOfQuestion)")
             DispatchQueue.global(qos: .userInteractive).async {
                 self.getQuestions.getQuestions(questionDifficulty: .medium) { (state) in
                     if state {
                         sleep(4)
-                        print("add 5 questions")
+                        print("add 5 medium questions")
                         self.questions.append(contentsOf: Game.shared.questionsArrayMedium)
                     } else {
                         print("Error with data from server")
@@ -159,13 +159,13 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        if self.numberOfQuestion == 8 {
+        if self.countTrueAnswers.countTrueAnswers == 8 {
             print("number of question - \(self.numberOfQuestion)")
             DispatchQueue.global(qos: .userInteractive).async {
                 self.getQuestions.getQuestions(questionDifficulty: .hard) { (state) in
                     if state {
                         sleep(4)
-                        print("add 5 questions")
+                        print("add 5 hard questions")
                         self.questions.append(contentsOf: Game.shared.questionsArrayHard)
                     } else {
                         print("Error with data from server")
@@ -173,7 +173,9 @@ class GameViewController: UIViewController {
                 }
             }
         }
-        selectedQuestion = questionSelectionStrategy?.selectionQuestions(questionArray: &questions, number: &numberOfQuestion).0
+        questions = questionSelectionStrategy!.selectionQuestions(questionArray: questions, number: numberOfQuestion).2
+        selectedQuestion = questionSelectionStrategy?.selectionQuestions(questionArray: questions, number: numberOfQuestion).0
+        numberOfQuestion = questionSelectionStrategy!.selectionQuestions(questionArray: questions, number: numberOfQuestion).1
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.help50Button)
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.callFriendButton)
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.hallHelpButton)
@@ -240,20 +242,7 @@ class GameViewController: UIViewController {
         question15PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
     }
     
-    //MARK: viewDidLoad
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print(questions.count)
-        
-        setTitlePriceButtons()
-        setImagePriceButtons()
-        
-        labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
-        
-        labelsPriceArray.first?.setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
-        labelsPriceArray.first?.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
-        
+    func observerFunc() {
         observer = {
             countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
                 if let newValue = change.newValue, newValue > 0, newValue < self.questions.count {
@@ -278,7 +267,25 @@ class GameViewController: UIViewController {
                 print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")
             }
         }()
-                
+    }
+    //MARK: viewDidLoad
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print(questions.count)
+        
+        questions = Game.shared.questionsArrayChild
+        
+        setTitlePriceButtons()
+        setImagePriceButtons()
+        
+        labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
+        
+        labelsPriceArray.first?.setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
+        labelsPriceArray.first?.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
+        
+        observerFunc()
+        
         switch orderOfQuestions {
         case .inSeries:
             questionSelectionStrategy = SeriesQuestionSelection()

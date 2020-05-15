@@ -9,22 +9,24 @@
 import UIKit
 
 protocol QuestionSelectionStrategy {
-    func selectionQuestions(questionArray: inout [Question], number: inout Int) -> (Question, Int?)
+    func selectionQuestions(questionArray: [Question], number: Int) -> (Question, Int, [Question])
 }
 
 struct SeriesQuestionSelection: QuestionSelectionStrategy {
-    func selectionQuestions(questionArray: inout [Question], number: inout Int) -> (Question, Int?) {
+    func selectionQuestions(questionArray: [Question], number: Int) -> (Question, Int, [Question]) {
+        print("number is - \(number)")
         let question = questionArray[number]
-        number += 1
-        return (question, number)
+        let numberReturn = number + 1
+        return (question, numberReturn, questionArray)
     }
 }
 
 struct RandomQuestionSelection: QuestionSelectionStrategy {
-    func selectionQuestions(questionArray: inout [Question], number: inout Int) -> (Question, Int?) {
+    func selectionQuestions(questionArray: [Question], number: Int) -> (Question, Int, [Question]) {
         let newNumber = Int.random(in: 0...questionArray.count - 1)
         let question = questionArray[newNumber]
-        questionArray.remove(at: newNumber)
-        return (question, nil)
+        var questionsArrayReturn = questionArray
+        questionsArrayReturn.remove(at: newNumber)
+        return (question, newNumber, questionsArrayReturn)
     }
 }
