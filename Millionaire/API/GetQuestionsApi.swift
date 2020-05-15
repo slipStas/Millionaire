@@ -21,6 +21,7 @@ class GetQuestionsApi {
     var getQuestions: QuestionsApi?
     
     func getQuestions(questionDifficulty difficulty: QuestionDifficulty, completionHandler: @escaping(Bool) -> ()) {
+        var question = Question(question: "", answers: [], trueAnswer: "")
         var urlLiteQuestions = URLComponents()
         urlLiteQuestions.scheme = "https"
         urlLiteQuestions.host = "engine.lifeis.porn"
@@ -40,15 +41,26 @@ class GetQuestionsApi {
             let items = questionsData.data
             
             for i in 0..<items.count {
-                var question = Question(question: "", answers: [], trueAnswer: "")
                 question.question = items[i].question
                 question.trueAnswer = items[i].answers.first!
                 /// Mix the answers
-                var answers = Set<String>()
-                items[i].answers.map {answers.insert($0)}
+                var answersSet = Set<String>()
+                items[i].answers.map {answersSet.insert($0)}
                 
-                question.answers.append(contentsOf: answers)
-                Game.shared.questionsArray.insert(question, at: 0)
+                question.answers.append(contentsOf: answersSet)
+                
+                switch difficulty {
+                case .child:
+                    Game.shared.questionsArrayChild.append(question)
+                case .medium:
+                    print("add medium")
+                    Game.shared.questionsArrayMedium.append(question)
+                case .hard:
+                    Game.shared.questionsArrayHard.append(question)
+                default:
+                    break
+                }
+                question.answers.removeAll()
             }
         }
         completionHandler(true)

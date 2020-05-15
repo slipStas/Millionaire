@@ -16,7 +16,6 @@ class MainViewController: UIViewController {
     let getQuestions = GetQuestionsApi()
     var isDataLoad = false
     var couldGoNextVC = false
-    let difficultyArray : [QuestionDifficulty] = [.hard, .medium, .low]
     
     @IBAction func refreshQuestions(_ sender: Any) {
         isDataLoad = false
@@ -41,35 +40,26 @@ class MainViewController: UIViewController {
         let question14 = Question(question: "Во что оборачивают на время созревания сыр ярг, который производят в английском графстве Корнуолл?", answers: ["в мох", "в навозные лепешки", "в листья крапивы", "в торф"], trueAnswer: "в листья крапивы")
         let question15 = Question(question: " Как на Руси называлась небольшая комната, обычно в верхней части дома?", answers: ["светелка", "горелка", "огневка", "теплушка"], trueAnswer: "светелка")
         
-        Game.shared.questionsArray.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
+        Game.shared.questionsArrayChild.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
     }
     
     func loadQuestions() {
-        DispatchQueue.global(qos: .userInteractive).async {
-//            self.difficultyArray.map { (item) in
-//                self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty(rawValue: item.rawValue)!) { (state) in
-//                    sleep(UInt32(1.1))
-//                    DispatchQueue.main.async {
-//                        if state {
-//                            print("add 5 questions")
-//                            self.serverStatusLabel.text = "Server is enable ✅"
-//                            self.serverStatusLabel.textColor = .green
-//                            self.isDataLoad = state
-//                            self.startGameButton.isEnabled = true
-//                        } else {
-//                            self.serverStatusLabel.text = "Server is disable ❌"
-//                            self.serverStatusLabel.textColor = .gray
-//                            self.isDataLoad = state
-//                            print("Error with data from server")
-//                            self.addQuestions()
-//                        }
-//                    }
-//                }
-//            }
-            self.addQuestions()
-            self.couldGoNextVC = true
-        }
-        self.startGameButton.isEnabled = true
+        self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty.child) { (state)  in
+            if state {
+                print("add 5 questions")
+                self.serverStatusLabel.text = "Server is enable ✅"
+                self.serverStatusLabel.textColor = .green
+                self.isDataLoad = state
+                self.couldGoNextVC = true
+                self.startGameButton.isEnabled = true
+            } else {
+                self.serverStatusLabel.text = "Server is disable ❌"
+                self.serverStatusLabel.textColor = .gray
+                self.isDataLoad = state
+                print("Error with data from server")
+                self.addQuestions()
+            }
+        }        
     }
     
     override func viewDidLoad() {
@@ -84,8 +74,7 @@ class MainViewController: UIViewController {
         
         if let identifier = segue.identifier, identifier == "start game", couldGoNextVC == true {
             if let destinationVC = segue.destination  as? GameViewController {
-                let questions = Game.shared.questionsArray
-                destinationVC.questions = questions
+                destinationVC.questions = Game.shared.questionsArrayChild
             }
         }
     }

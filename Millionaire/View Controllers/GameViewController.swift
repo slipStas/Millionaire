@@ -16,6 +16,7 @@ class GameViewController: UIViewController {
     public var orderOfQuestions: OrderOfQuestions = Game.shared.orderOfQuestions ?? OrderOfQuestions.inSeries
     public var hintsSettings: HintsSettings = Game.shared.hintsSettings ?? HintsSettings.noHints
     
+    let getQuestions = GetQuestionsApi()
     var questionSelectionStrategy: QuestionSelectionStrategy?
     var hintsOptionsStrategy: HintOptionsStrategy?
     var questions: [Question] = []
@@ -146,6 +147,34 @@ class GameViewController: UIViewController {
     }
     
     func startGame() {
+        if self.numberOfQuestion == 2 {
+            print("number of question - \(self.numberOfQuestion)")
+            DispatchQueue.global(qos: .userInteractive).async {
+                self.getQuestions.getQuestions(questionDifficulty: .medium) { (state) in
+                    if state {
+                        sleep(4)
+                        print("add 5 questions")
+                        self.questions.append(contentsOf: Game.shared.questionsArrayMedium)
+                    } else {
+                        print("Error with data from server")
+                    }
+                }
+            }
+        }
+        if self.numberOfQuestion == 8 {
+            print("number of question - \(self.numberOfQuestion)")
+            DispatchQueue.global(qos: .userInteractive).async {
+                self.getQuestions.getQuestions(questionDifficulty: .hard) { (state) in
+                    if state {
+                        sleep(4)
+                        print("add 5 questions")
+                        self.questions.append(contentsOf: Game.shared.questionsArrayHard)
+                    } else {
+                        print("Error with data from server")
+                    }
+                }
+            }
+        }
         selectedQuestion = questionSelectionStrategy?.selectionQuestions(questionArray: &questions, number: &numberOfQuestion).0
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.help50Button)
         hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.callFriendButton)
@@ -229,7 +258,7 @@ class GameViewController: UIViewController {
         
         observer = {
             countTrueAnswers.observe(\.countTrueAnswers, options: [.old ,.new]) { (_, change) in
-                if let newValue = change.newValue, newValue > 0, newValue < 15 {
+                if let newValue = change.newValue, newValue > 0, newValue < self.questions.count {
                     let titleLabel = self.labelsPriceArray[newValue - 1].titleLabel?.text
                     
                     UIView.animate(withDuration: 0.5, animations: {

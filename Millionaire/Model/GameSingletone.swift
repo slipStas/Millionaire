@@ -28,7 +28,9 @@ public class Game {
     var isFriendCallUsed : HintsUsed?
     var isHallHelpUsed : HintsUsed?
     
-    var questionsArray: [Question] = []
+    var questionsArrayChild: [Question] = []
+    var questionsArrayMedium: [Question] = []
+    var questionsArrayHard: [Question] = []
     
     var orderOfQuestions: OrderOfQuestions?
     var hintsSettings: HintsSettings? 
