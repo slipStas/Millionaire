@@ -9,41 +9,52 @@
 import UIKit
 
 protocol HintOptionsStrategy {
-    func hintOptionsViewDidLoad(button: inout UIButton)
-    func hintOptionsByTap(button: inout UIButton)
+    func hintOptionsViewDidLoad(button: UIButton) -> UIButton
+    func hintOptionsByTap(button: UIButton) -> UIButton
 }
 
 struct NoHintsStrategy: HintOptionsStrategy {
-    func hintOptionsViewDidLoad(button: inout UIButton) {
-        button.isEnabled = false
+    func hintOptionsViewDidLoad(button: UIButton) -> UIButton {
+        let returnedButton = button
+        returnedButton.isEnabled = false
+        
+        return returnedButton
     }
     
-    func hintOptionsByTap(button: inout UIButton) {
+    func hintOptionsByTap(button: UIButton) -> UIButton {
+        let returnedButton = button
         print("can't tap the disable button")
+        
+        return returnedButton
     }
 }
 
 struct OneTimeHintsStrategy: HintOptionsStrategy {
     
-    func hintOptionsViewDidLoad(button: inout UIButton) {
+    func hintOptionsViewDidLoad(button: UIButton) -> UIButton {
+        let returnedButton = button
+        
         guard let isHint50 = Game.shared.isHint50Used?.hint,
-        let isFriendHint = Game.shared.isFriendCallUsed?.hint,
-        let isHallHint = Game.shared.isHallHelpUsed?.hint else {return}
+            let isFriendHint = Game.shared.isFriendCallUsed?.hint,
+            let isHallHint = Game.shared.isHallHelpUsed?.hint else {return returnedButton}
 
-        switch button.backgroundImage(for: .normal) {
+        switch returnedButton.backgroundImage(for: .normal) {
         case UIImage(named: "50_50"):
-            button.isEnabled = !isHint50
+            returnedButton.isEnabled = !isHint50
         case UIImage(named: "telephone"):
-            button.isEnabled = !isFriendHint
+            returnedButton.isEnabled = !isFriendHint
         case UIImage(named: "people"):
-            button.isEnabled = !isHallHint
+            returnedButton.isEnabled = !isHallHint
         default:
             break
         }
+        return returnedButton
     }
     
-    func hintOptionsByTap(button: inout UIButton) {
-        switch button.backgroundImage(for: .normal) {
+    func hintOptionsByTap(button: UIButton) -> UIButton {
+        let returnedButton = button
+
+        switch returnedButton.backgroundImage(for: .normal) {
         case UIImage(named: "50_50"):
             Game.shared.isHint50Used?.hint = false
         case UIImage(named: "telephone"):
@@ -53,17 +64,24 @@ struct OneTimeHintsStrategy: HintOptionsStrategy {
         default:
             break
         }
-        button.isEnabled = false
+        returnedButton.isEnabled = false
+        return returnedButton
     }
 }
 
 struct InfinitelyHintsStrategy: HintOptionsStrategy {
-    func hintOptionsViewDidLoad(button: inout UIButton) {
-        button.isEnabled = true
+    func hintOptionsViewDidLoad(button: UIButton) -> UIButton {
+        let returnedButton = button
+        returnedButton.isEnabled = true
+        
+        return returnedButton
     }
     
-    func hintOptionsByTap(button: inout UIButton) {
-        button.isEnabled = false
+    func hintOptionsByTap(button: UIButton) -> UIButton {
+        let returnedButton = button
+        returnedButton.isEnabled = false
+        
+        return returnedButton
     }
 }
 

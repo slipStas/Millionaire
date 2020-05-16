@@ -124,11 +124,11 @@ class GameViewController: UIViewController {
     
     @IBAction func callFriend(_ sender: Any) {
         print("calling friend")
-        hintsOptionsStrategy?.hintOptionsByTap(button: &self.callFriendButton)
+        self.callFriendButton = hintsOptionsStrategy?.hintOptionsByTap(button: self.callFriendButton)
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
-        hintsOptionsStrategy?.hintOptionsByTap(button: &self.hallHelpButton)
+        self.hallHelpButton = hintsOptionsStrategy?.hintOptionsByTap(button: self.hallHelpButton)
     }
     
     
@@ -138,7 +138,7 @@ class GameViewController: UIViewController {
             selectedQuestion?.answers[i] = ""
         }
         addTitileToButtons()
-        hintsOptionsStrategy?.hintOptionsByTap(button: &self.help50Button)
+        self.help50Button = hintsOptionsStrategy?.hintOptionsByTap(button: self.help50Button)
     }
     
     func showWining(title: String, message: String, style : UIAlertController.Style) {
@@ -187,9 +187,9 @@ class GameViewController: UIViewController {
         questions = questionSelectionStrategy!.selectionQuestions(questionArray: questions, number: numberOfQuestion).2
         selectedQuestion = questionSelectionStrategy?.selectionQuestions(questionArray: questions, number: numberOfQuestion).0
         numberOfQuestion = questionSelectionStrategy!.selectionQuestions(questionArray: questions, number: numberOfQuestion).1
-        hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.help50Button)
-        hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.callFriendButton)
-        hintsOptionsStrategy?.hintOptionsViewDidLoad(button: &self.hallHelpButton)
+        self.help50Button = hintsOptionsStrategy?.hintOptionsViewDidLoad(button: self.help50Button)
+        self.callFriendButton = hintsOptionsStrategy?.hintOptionsViewDidLoad(button: self.callFriendButton)
+        self.hallHelpButton = hintsOptionsStrategy?.hintOptionsViewDidLoad(button: self.hallHelpButton)
         
         self.questionLabel.text = selectedQuestion?.question
         
@@ -239,6 +239,10 @@ class GameViewController: UIViewController {
         help50Button.setBackgroundImage(UIImage.hint50Image, for: .normal)
         callFriendButton.setBackgroundImage(UIImage.hintTelephoneImage, for: .normal)
         hallHelpButton.setBackgroundImage(UIImage.hintPeopleImage, for: .normal)
+        
+        help50Button.setTitle("", for: .normal)
+        callFriendButton.setTitle("", for: .normal)
+        hallHelpButton.setTitle("", for: .normal)
         
         mainQuestionImageView.image = UIImage.mainBackgroundImage
         
