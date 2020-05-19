@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     public var orderOfQuestions: Settings.OrderOfQuestions = Game.shared.orderOfQuestions ?? Settings.OrderOfQuestions.inSeries
     public var hintsSettings: Settings.HintsSettings = Game.shared.hintsSettings ?? Settings.HintsSettings.noHints
     
-    let pricesStringArray = ["100", "200", "300", "500", "1,000", "2,000", "4,000", "8,000", "16,000", "32,000", "64,000", "125,000", "250,000", "500,000", "1,000,000"]
+    let pricesStringArray = ["0", "100", "200", "300", "500", "1,000", "2,000", "4,000", "8,000", "16,000", "32,000", "64,000", "125,000", "250,000", "500,000", "1,000,000"]
     let noData = "no data"
     let getQuestions = GetQuestionsApi()
     var questionSelectionStrategy: QuestionSelectionStrategy?
@@ -340,7 +340,7 @@ extension GameViewController: GameSceneDelegate {
         print("stop game")
         print("Your result is \(pricesStringArray[result]) ₽")
         var records = (try? GameCaretaker.shared.load()) ?? []
-        let newRecord = GameSession(date: Date(), value: pricesStringArray[result - 1] + " ₽").self
+        let newRecord = GameSession(date: Date(), value: pricesStringArray[result] + " ₽").self
         records.append(newRecord)
         Game.shared.questionsArrayChild.removeAll()
         Game.shared.questionsArrayMedium.removeAll()
