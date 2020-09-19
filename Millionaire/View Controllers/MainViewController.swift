@@ -29,12 +29,6 @@ class MainViewController: UIViewController {
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
             self.present(newViewController, animated: true, completion: nil)
         }
-//        else {
-//            self.loadQuestions()
-//            let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
-//            let newViewController = storyBoard.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
-//            self.present(newViewController, animated: true, completion: nil)
-//        }
     }
     
     func addQuestions() {

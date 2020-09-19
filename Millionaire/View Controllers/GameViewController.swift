@@ -31,10 +31,12 @@ class GameViewController: UIViewController {
         didSet {
             if self.checkAnswer() && countTrueAnswers.countTrueAnswers == questions.count - 1 {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
-                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
-                    self.pressedButton?.alpha = 0
-                    self.pressedButton?.alpha = 1
+                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
+                        self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                        self.pressedButton?.alpha = 0
+                        self.pressedButton?.alpha = 1
+                    }
+                    
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
@@ -42,10 +44,11 @@ class GameViewController: UIViewController {
                 }
             } else if self.checkAnswer() {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(3)
-                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
-                    self.pressedButton?.alpha = 0
-                    self.pressedButton?.alpha = 1
+                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
+                        self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                        self.pressedButton?.alpha = 0
+                        self.pressedButton?.alpha = 1
+                    }
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
@@ -66,11 +69,12 @@ class GameViewController: UIViewController {
                 guard let trueButton = buttonsArray.filter({$0?.titleLabel?.text == self.selectedQuestion?.trueAnswer}).first! else {return}
                 
                 UIView.animate(withDuration: 0.09, delay: 0, options: [.autoreverse, .repeat], animations: {
-                    UIView.setAnimationRepeatCount(5)
-                    self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundFalse"), for: .normal)
-                    trueButton.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
-                    self.pressedButton?.alpha = 0
-                    self.pressedButton?.alpha = 1
+                    UIView.modifyAnimations(withRepeatCount: 3, autoreverses: true) {
+                        self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackgroundFalse"), for: .normal)
+                        trueButton.setBackgroundImage(UIImage(named: "mainBackgroundTrue"), for: .normal)
+                        self.pressedButton?.alpha = 0
+                        self.pressedButton?.alpha = 1
+                    }
                 }) { _ in
                     sleep(2)
                     self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
@@ -138,10 +142,10 @@ class GameViewController: UIViewController {
     }
     
     func addTitileToButtons() {
-        self.buttonA.setTitle("A. " + (selectedQuestion?.answers[0] ?? "no question"), for: .normal)
-        self.buttonB.setTitle("B. " + (selectedQuestion?.answers[1] ?? "no question"), for: .normal)
-        self.buttonC.setTitle("C. " + (selectedQuestion?.answers[2] ?? "no question"), for: .normal)
-        self.buttonD.setTitle("D. " + (selectedQuestion?.answers[3] ?? "no question"), for: .normal)
+        self.buttonA.setTitle("A: " + (selectedQuestion?.answers[0] ?? "no question"), for: .normal)
+        self.buttonB.setTitle("B: " + (selectedQuestion?.answers[1] ?? "no question"), for: .normal)
+        self.buttonC.setTitle("C: " + (selectedQuestion?.answers[2] ?? "no question"), for: .normal)
+        self.buttonD.setTitle("D: " + (selectedQuestion?.answers[3] ?? "no question"), for: .normal)
     }
     
     func startGame() {
