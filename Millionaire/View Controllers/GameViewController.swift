@@ -113,6 +113,8 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     
+    @IBOutlet weak var consoleView: FriendCallView!
+    
     @IBAction func pressedButton(_ sender: UIButton) {
         guard var answer = sender.titleLabel?.text else {return}
         self.pressedButton = sender
@@ -128,6 +130,9 @@ class GameViewController: UIViewController {
     @IBAction func callFriend(_ sender: Any) {
         print("calling friend")
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.callFriendButton)
+        
+        consoleView.startTimer()
+        consoleView.animateCircle(duration: 0.3)
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
@@ -299,7 +304,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
                 
         questions = Game.shared.questionsArrayChild
-        
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
         setTitlePriceButtons(buttons: labelsPriceArray)
