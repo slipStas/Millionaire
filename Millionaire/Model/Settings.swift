@@ -9,10 +9,6 @@
 import Foundation
 
 enum Settings {
-    enum OrderOfQuestions: Int {
-        case inSeries = 0
-        case random = 1
-    }
 
     enum HintsSettings: Int {
         case noHints = 0

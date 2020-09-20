@@ -44,7 +44,7 @@ extension TableViewController: UITableViewDataSource {
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.dateFormat = "HH:mm:ss, EEE, d MMM, yyyy"
         
-        cell.textLabel?.text = String(record.value)
+        cell.textLabel?.text = record.value + "₽"
         cell.detailTextLabel?.text = dateFormatter.string(from: record.date)
         
         return cell

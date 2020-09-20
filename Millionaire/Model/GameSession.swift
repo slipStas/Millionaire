@@ -11,9 +11,9 @@ import Foundation
 class GameSession: Codable {
     
     var date: Date
-    var value: Int 
+    var value: String
     
-    init(date: Date, value: Int) {
+    init(date: Date, value: String) {
         self.date = date
         self.value = value
     }

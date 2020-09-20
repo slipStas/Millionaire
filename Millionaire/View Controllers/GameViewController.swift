@@ -13,8 +13,7 @@ class GameViewController: UIViewController {
     /// Game delegate
     public weak var gameDelegate: GameSceneDelegate?
     
-    public var orderOfQuestions: Settings.OrderOfQuestions = Game.shared.orderOfQuestions ?? Settings.OrderOfQuestions.inSeries
-    public var hintsSettings: Settings.HintsSettings = Game.shared.hintsSettings ?? Settings.HintsSettings.noHints
+    public var hintsSettings: Settings.HintsSettings = Game.shared.hintsSettings ?? Settings.HintsSettings.oneTime
     
     let getQuestions = GetQuestionsApi()
     var questionSelectionStrategy: QuestionSelectionStrategy?
@@ -40,7 +39,7 @@ class GameViewController: UIViewController {
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
-                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
+                    self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers].currentTitle ?? "error")
                 }
             } else if self.checkAnswer() {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
@@ -77,7 +76,7 @@ class GameViewController: UIViewController {
                     }
                 }) { _ in
                     sleep(2)
-                    self.gameDelegate?.didEndGame(result: self.countTrueAnswers.countTrueAnswers)
+                    self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers].currentTitle ?? "error")
                 }
             }
         }
@@ -142,15 +141,17 @@ class GameViewController: UIViewController {
     }
     
     func addTitileToButtons() {
-        self.buttonA.setTitle("A: " + (selectedQuestion?.answers[0] ?? "no question"), for: .normal)
-        self.buttonB.setTitle("B: " + (selectedQuestion?.answers[1] ?? "no question"), for: .normal)
-        self.buttonC.setTitle("C: " + (selectedQuestion?.answers[2] ?? "no question"), for: .normal)
-        self.buttonD.setTitle("D: " + (selectedQuestion?.answers[3] ?? "no question"), for: .normal)
+        
+        guard let question = selectedQuestion?.answers else {return}
+        
+        self.buttonA.setTitle("A: " + (question[0]), for: .normal)
+        self.buttonB.setTitle("B: " + (question[1]), for: .normal)
+        self.buttonC.setTitle("C: " + (question[2]), for: .normal)
+        self.buttonD.setTitle("D: " + (question[3]), for: .normal)
     }
     
     func startGame() {
         if self.countTrueAnswers.countTrueAnswers == 2 {
-            print("number of question - \(self.numberOfQuestion)")
             DispatchQueue.global(qos: .userInteractive).async {
                 self.getQuestions.getQuestions(questionDifficulty: .medium) { (state) in
                     if state {
@@ -164,7 +165,6 @@ class GameViewController: UIViewController {
             }
         }
         if self.countTrueAnswers.countTrueAnswers == 8 {
-            print("number of question - \(self.numberOfQuestion)")
             DispatchQueue.global(qos: .userInteractive).async {
                 self.getQuestions.getQuestions(questionDifficulty: .hard) { (state) in
                     if state {
@@ -210,40 +210,58 @@ class GameViewController: UIViewController {
         return arrayFalseAnswers
     }
     
-    func setTitlePriceButtons() {
-        question1PriceLabel.setTitle("100", for: .normal)
-        question2PriceLabel.setTitle("200", for: .normal)
-        question3PriceLabel.setTitle("300", for: .normal)
-        question4PriceLabel.setTitle("500", for: .normal)
-        question5PriceLabel.setTitle("1,000", for: .normal)
-        question6PriceLabel.setTitle("2,000", for: .normal)
-        question7PriceLabel.setTitle("4,000", for: .normal)
-        question8PriceLabel.setTitle("8,000", for: .normal)
-        question9PriceLabel.setTitle("16,000", for: .normal)
-        question10PriceLabel.setTitle("32,000", for: .normal)
-        question11PriceLabel.setTitle("64,000", for: .normal)
-        question12PriceLabel.setTitle("125,000", for: .normal)
-        question13PriceLabel.setTitle("250,000", for: .normal)
-        question14PriceLabel.setTitle("500,000", for: .normal)
-        question15PriceLabel.setTitle("1,000,000", for: .normal)
+    func addSpace(integer: Int) -> String {
+        var string = String(integer)
+        var count = 1
+
+        string = String(string.reversed())
+
+        string.forEach { (char) in
+            switch count {
+            case 3:
+                string.insert(" ", at: string.index(string.startIndex, offsetBy: count))
+            case 6:
+                string.insert(" ", at: string.index(string.startIndex, offsetBy: count + 1))
+            default:
+                break
+            }
+            count += 1
+        }
+        
+        return String(string.reversed())
     }
     
-    func setImagePriceButtons() {
-        question1PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question2PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question3PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question4PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question5PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question6PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question7PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question8PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question9PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question10PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question11PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question12PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question13PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question14PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
-        question15PriceLabel.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
+    func setTitlePriceButtons(buttons: [UIButton]) {
+        var title = 100
+        var count = 0
+        buttons.forEach { (button) in
+            switch count {
+            case 0...1:
+                button.setTitle(addSpace(integer: title), for: .normal)
+                count += 1
+                title += 100
+            case 2:
+                button.setTitle(addSpace(integer: title), for: .normal)
+                count += 1
+                title += 200
+            case 3...9, 11...14:
+                button.setTitle(addSpace(integer: title), for: .normal)
+                count += 1
+                title *= 2
+            case 10:
+                button.setTitle(addSpace(integer: title), for: .normal)
+                count += 1
+                title = 125_000
+            default:
+                break
+            }
+        }
+    }
+    
+    func setImagePriceButtons(buttons: [UIButton]) {
+        
+        buttons.forEach { $0.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal) }
+        
     }
     
     func observerFunc() {
@@ -275,27 +293,19 @@ class GameViewController: UIViewController {
     //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print(questions.count)
-        
+                
         questions = Game.shared.questionsArrayChild
-        
-        setTitlePriceButtons()
-        setImagePriceButtons()
         
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
+        setTitlePriceButtons(buttons: labelsPriceArray)
+        setImagePriceButtons(buttons: labelsPriceArray)
+
         labelsPriceArray.first?.setBackgroundImage(UIImage(named: "mainBackgroundOrange"), for: .normal)
         labelsPriceArray.first?.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(), size: 25)
         
         observerFunc()
-        
-        switch orderOfQuestions {
-        case .inSeries:
-            questionSelectionStrategy = SeriesQuestionSelection()
-        case .random:
-            questionSelectionStrategy = RandomQuestionSelection()
-        }
+        questionSelectionStrategy = SeriesQuestionSelection()
         
         switch hintsSettings {
         case .infinitely:
@@ -312,7 +322,7 @@ class GameViewController: UIViewController {
 }
 
 extension GameViewController: GameSceneDelegate {
-    func didEndGame(result: Int) {
+    func didEndGame(result: String) {
         self.dismiss(animated: true, completion: nil)
         print("stop game")
         print("Your result is \(countTrueAnswers)")

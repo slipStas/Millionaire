@@ -32,7 +32,6 @@ public class Game {
     var questionsArrayMedium: [Question] = []
     var questionsArrayHard: [Question] = []
     
-    var orderOfQuestions: Settings.OrderOfQuestions?
     var hintsSettings: Settings.HintsSettings? 
     
     private init() {}
