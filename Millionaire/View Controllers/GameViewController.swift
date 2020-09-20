@@ -39,7 +39,7 @@ class GameViewController: UIViewController {
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
-                    self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers].currentTitle ?? "error")
+                   // self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers].currentTitle ?? "error")
                 }
             } else if self.checkAnswer() {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
@@ -76,7 +76,11 @@ class GameViewController: UIViewController {
                     }
                 }) { _ in
                     sleep(2)
-                    self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers].currentTitle ?? "error")
+                    if self.countTrueAnswers.countTrueAnswers == 0 {
+                        self.gameDelegate?.didEndGame(result: "0")
+                    } else {
+                        self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers - 1].currentTitle ?? "error")
+                    }
                 }
             }
         }
@@ -324,8 +328,6 @@ class GameViewController: UIViewController {
 extension GameViewController: GameSceneDelegate {
     func didEndGame(result: String) {
         self.dismiss(animated: true, completion: nil)
-        print("stop game")
-        print("Your result is \(countTrueAnswers)")
         var records = (try? GameCaretaker.shared.load()) ?? []
         let newRecord = GameSession(date: Date(), value: result).self
         records.append(newRecord)
