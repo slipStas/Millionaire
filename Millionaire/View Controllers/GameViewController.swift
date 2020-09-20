@@ -125,6 +125,8 @@ class GameViewController: UIViewController {
             count += 1
         }
         self.answer = answer
+        consoleView.stopTimer()
+        consoleView.animateRemoving(view: consoleView.friendCallView)
     }
     
     @IBAction func callFriend(_ sender: Any) {

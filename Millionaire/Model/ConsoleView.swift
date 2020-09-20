@@ -17,6 +17,7 @@ class FriendCallView: UIView {
             animateCircle(duration: 0.3)
             if timerCounter == 0 {
                 stopTimer()
+                animateRemoving(view: self.friendCallView)
             }
         }
     }
@@ -24,7 +25,6 @@ class FriendCallView: UIView {
     
     let friendCallView: UIView = {
         let view = UIView(frame: .zero)
-        
         
         return view
     }()
@@ -41,19 +41,16 @@ class FriendCallView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        setup()
     }
 
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-//        setup()
     }
     
     func setup(){
         backgroundColor = UIColor.clear
         
         friendCallView.frame = bounds
-        friendCallView.backgroundColor = .blue
 
         addSubview(friendCallView)
         friendCallView.layer.addSublayer(circleLayer)
@@ -75,17 +72,13 @@ class FriendCallView: UIView {
         self.strokeEnd += 0.0333
         if self.strokeEnd >= 1 {
             self.strokeEnd = 1
-            
         }
         strokeEndAnimation.toValue = self.strokeEnd
         
         strokeEndAnimation.isRemovedOnCompletion = false
         strokeEndAnimation.fillMode = CAMediaTimingFillMode.both
-        
         self.circleLayer.strokeEnd = CGFloat(self.strokeEnd)
-        
         strokeEndAnimation.isRemovedOnCompletion = true
-        
         strokeEndAnimation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.linear)
         
         circleLayer.add(strokeEndAnimation, forKey: "animateCircle")
@@ -106,7 +99,6 @@ class FriendCallView: UIView {
         print("stop timer")
         self.timer?.invalidate()
         self.timer = nil
-        animateRemoving(view: self.friendCallView)
     }
     
     func animateRemoving(view: UIView) {
