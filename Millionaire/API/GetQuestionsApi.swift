@@ -49,8 +49,8 @@ class GetQuestionsApi {
                 question.answers.append(contentsOf: answersSet)
                 
                 switch difficulty {
-                case .child:
-                    Game.shared.questionsArrayChild.append(question)
+                case .low:
+                    Game.shared.questionsArrayLow.append(question)
                 case .medium:
                     print("add medium")
                     Game.shared.questionsArrayMedium.append(question)
