@@ -149,26 +149,26 @@ class FriendCallView: UIView {
     func friendRandomAnswerGenerate(question: Question) {
         var friendAnswer = "Я думаю, что правильный ответ это - "
         
-        let answerA = RandomAnswersByFriendCall()
-        let answerB = RandomAnswersByFriendCall()
-        let answerC = RandomAnswersByFriendCall()
-        let answerD = RandomAnswersByFriendCall()
+        let answerA = RandomAnswers()
+        let answerB = RandomAnswers()
+        let answerC = RandomAnswers()
+        let answerD = RandomAnswers()
         
         var count = 0
-        var selectedAnswerByFriend = RandomAnswersByFriendCall()
+        var selectedAnswerByFriend = RandomAnswers()
         
         let answersArray = [answerA, answerB, answerC, answerD]
         
         question.answers.forEach { (answer) in
-            var randomiser = 0.0
+            var randomiser = 0
             
             switch answer {
             case question.trueAnswer:
-                randomiser = Double.random(in: 40...100)
+                randomiser = Int.random(in: 40...100)
             case "":
-                randomiser = 0.0
+                randomiser = 0
             default:
-                randomiser = Double.random(in: 0...90)
+                randomiser = Int.random(in: 0...90)
             }
             
             answersArray[count].integer = randomiser
@@ -233,6 +233,39 @@ class AuditoryHelpView: UIView {
         return view
     }()
     
+    var percentAColumn: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.alpha = 0
+        return label
+    }()
+    var percentBColumn: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.alpha = 0
+        return label
+    }()
+    var percentCColumn: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.alpha = 0
+        return label
+    }()
+    var percentDColumn: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 20)
+        label.textAlignment = .center
+        label.alpha = 0
+        return label
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -256,12 +289,41 @@ class AuditoryHelpView: UIView {
         auditoryHelpView.addSubview(columnBView)
         auditoryHelpView.addSubview(columnCView)
         auditoryHelpView.addSubview(columnDView)
+        auditoryHelpView.addSubview(percentAColumn)
+        auditoryHelpView.addSubview(percentBColumn)
+        auditoryHelpView.addSubview(percentCColumn)
+        auditoryHelpView.addSubview(percentDColumn)
         
         abcdLabel.translatesAutoresizingMaskIntoConstraints = false
         abcdLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 0).isActive = true
         abcdLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: self.trailingAnchor, multiplier: 0).isActive = true
         abcdLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: self.bottomAnchor, multiplier: 0).isActive = true
         abcdLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        percentAColumn.translatesAutoresizingMaskIntoConstraints = false
+        percentAColumn.leadingAnchor.constraint(equalToSystemSpacingAfter: self.columnAView.leadingAnchor, multiplier: 0).isActive = true
+        percentAColumn.trailingAnchor.constraint(equalToSystemSpacingAfter: self.columnAView.trailingAnchor, multiplier: 0).isActive = true
+        percentAColumn.bottomAnchor.constraint(equalToSystemSpacingBelow: self.columnAView.topAnchor, multiplier: 0).isActive = true
+        percentAColumn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        percentBColumn.translatesAutoresizingMaskIntoConstraints = false
+        percentBColumn.leadingAnchor.constraint(equalToSystemSpacingAfter: self.columnBView.leadingAnchor, multiplier: 0).isActive = true
+        percentBColumn.trailingAnchor.constraint(equalToSystemSpacingAfter: self.columnBView.trailingAnchor, multiplier: 0).isActive = true
+        percentBColumn.bottomAnchor.constraint(equalToSystemSpacingBelow: self.columnBView.topAnchor, multiplier: 0).isActive = true
+        percentBColumn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        percentCColumn.translatesAutoresizingMaskIntoConstraints = false
+        percentCColumn.leadingAnchor.constraint(equalToSystemSpacingAfter: self.columnCView.leadingAnchor, multiplier: 0).isActive = true
+        percentCColumn.trailingAnchor.constraint(equalToSystemSpacingAfter: self.columnCView.trailingAnchor, multiplier: 0).isActive = true
+        percentCColumn.bottomAnchor.constraint(equalToSystemSpacingBelow: self.columnCView.topAnchor, multiplier: 0).isActive = true
+        percentCColumn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        percentDColumn.translatesAutoresizingMaskIntoConstraints = false
+        percentDColumn.leadingAnchor.constraint(equalToSystemSpacingAfter: self.columnDView.leadingAnchor, multiplier: 0).isActive = true
+        percentDColumn.trailingAnchor.constraint(equalToSystemSpacingAfter: self.columnDView.trailingAnchor, multiplier: 0).isActive = true
+        percentDColumn.bottomAnchor.constraint(equalToSystemSpacingBelow: self.columnDView.topAnchor, multiplier: 0).isActive = true
+        percentDColumn.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
         
         UIView.animate(withDuration: 0.5) {
             self.auditoryHelpView.alpha = 1
@@ -272,30 +334,78 @@ class AuditoryHelpView: UIView {
         UIView.animate(withDuration: 0.5) {
             view.transform = CGAffineTransform.init(scaleX: 0.2, y: 0.2)
             view.alpha = 0
+            self.percentAColumn.alpha = 0
+            self.percentBColumn.alpha = 0
+            self.percentCColumn.alpha = 0
+            self.percentDColumn.alpha = 0
         } completion: { (status) in
             view.removeFromSuperview()
             view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
         }
     }
     
-    func animateColumns() {
+    func animateColumns(question: Question) {
         
-        let columnAHeight = CGFloat.random(in: 0...100)
-        let columnBHeight = CGFloat.random(in: 0...100)
-        let columnCHeight = CGFloat.random(in: 0...100)
-        let columnDHeight = CGFloat.random(in: 0...100)
+        var trueAnswerInt = 0
+        var count = 0
+        var bufferInteger = 100 {
+            didSet  {
+                if bufferInteger < 0 {
+                    bufferInteger = 0
+                }
+            }
+        }
         
-        UIView.animate(withDuration: 2, delay: 1) {
-            self.columnAView.frame = CGRect(x: self.columnAView.frame.minX, y: self.columnAView.frame.minY - columnAHeight * 3, width: self.columnAView.frame.width, height: self.columnAView.frame.height + columnAHeight * 3)
+        var answersArray: [Int] = []
+        
+        question.answers.forEach { (answer) in
+            switch answer {
+            case question.trueAnswer:
+                answersArray.insert(Int.random(in: 0...bufferInteger), at: count)
+                bufferInteger -= answersArray[count]
+                trueAnswerInt = count
+            case "":
+                answersArray.insert(0, at: count)
+            default:
+                answersArray.insert(Int.random(in: 0...bufferInteger), at: count)
+                bufferInteger -= answersArray[count]
+            }
+            count += 1
         }
-        UIView.animate(withDuration: 2, delay: 1.1) {
-            self.columnBView.frame = CGRect(x: self.columnBView.frame.minX, y: self.columnBView.frame.minY - columnBHeight * 3, width: self.columnBView.frame.width, height: self.columnBView.frame.height + columnBHeight * 3)
+        answersArray[trueAnswerInt] += bufferInteger
+        
+        self.percentAColumn.text = String(answersArray[0])
+        self.percentBColumn.text = String(answersArray[1])
+        self.percentCColumn.text = String(answersArray[2])
+        self.percentDColumn.text = String(answersArray[3])
+        
+        UIView.animate(withDuration: 2, delay: 1, options: []) {
+            self.columnAView.frame = CGRect(x: self.columnAView.frame.minX, y: self.columnAView.frame.minY - CGFloat(answersArray[0] * 3), width: self.columnAView.frame.width, height: self.columnAView.frame.height + CGFloat(answersArray[0] * 3))
+        } completion: { (status) in
+            UIView.animate(withDuration: 0.5) {
+                self.percentAColumn.alpha = 1
+            }
         }
-        UIView.animate(withDuration: 2, delay: 1.2) {
-            self.columnCView.frame = CGRect(x: self.columnCView.frame.minX, y: self.columnCView.frame.minY - columnCHeight * 3, width: self.columnCView.frame.width, height: self.columnCView.frame.height + columnCHeight * 3)
+        UIView.animate(withDuration: 2, delay: 1.1, options: []) {
+            self.columnBView.frame = CGRect(x: self.columnBView.frame.minX, y: self.columnBView.frame.minY - CGFloat(answersArray[1] * 3), width: self.columnBView.frame.width, height: self.columnBView.frame.height + CGFloat(answersArray[1] * 3))
+        } completion: { (status) in
+            UIView.animate(withDuration: 0.5) {
+                self.percentBColumn.alpha = 1
+            }
         }
-        UIView.animate(withDuration: 2, delay: 1.3) {
-            self.columnDView.frame = CGRect(x: self.columnDView.frame.minX, y: self.columnDView.frame.minY - columnDHeight * 3, width: self.columnDView.frame.width, height: self.columnDView.frame.height + columnDHeight * 3)
+        UIView.animate(withDuration: 2, delay: 1.2, options: []) {
+            self.columnCView.frame = CGRect(x: self.columnCView.frame.minX, y: self.columnCView.frame.minY - CGFloat(answersArray[2] * 3), width: self.columnCView.frame.width, height: self.columnCView.frame.height + CGFloat(answersArray[2] * 3))
+        } completion: { (status) in
+            UIView.animate(withDuration: 0.5) {
+                self.percentCColumn.alpha = 1
+            }
+        }
+        UIView.animate(withDuration: 2, delay: 1.3, options: []) {
+            self.columnDView.frame = CGRect(x: self.columnDView.frame.minX, y: self.columnDView.frame.minY - CGFloat(answersArray[3] * 3), width: self.columnDView.frame.width, height: self.columnDView.frame.height + CGFloat(answersArray[3] * 3))
+        } completion: { (status) in
+            UIView.animate(withDuration: 0.5) {
+                self.percentDColumn.alpha = 1
+            }
         }
     }
 }
@@ -328,6 +438,4 @@ class ConsoleView: UIView {
         addSubview(auditoryHelp)
         addSubview(friendCall)
     }
-    
-   
 }
