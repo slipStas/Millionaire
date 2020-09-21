@@ -15,11 +15,11 @@ class SettingsViewController: UIViewController {
     @IBAction func hintsSelected(_ sender: Any) {
         switch hintsSegmetnControl.selectedSegmentIndex {
         case 0:
-            Game.shared.hintsSettings = .noHints
+            Game.shared.defaults.setValue(0, forKey: "difficulty")
         case 1:
-            Game.shared.hintsSettings = .oneTime
+            Game.shared.defaults.setValue(1, forKey: "difficulty")
         case 2:
-            Game.shared.hintsSettings = .infinitely
+            Game.shared.defaults.setValue(2, forKey: "difficulty")
         default:
             break
         }
@@ -29,6 +29,6 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        hintsSegmetnControl.selectedSegmentIndex = Game.shared.hintsSettings?.rawValue ?? 0
+        hintsSegmetnControl.selectedSegmentIndex = Game.shared.defaults.integer(forKey: "difficulty")
     }
 }

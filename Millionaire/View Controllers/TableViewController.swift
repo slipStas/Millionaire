@@ -15,6 +15,7 @@ class TableViewController: UIViewController {
     @IBOutlet weak var recordsTableView: UITableView! {
         didSet {
             self.recordsTableView.dataSource = self
+            self.recordsTableView.delegate = self
         }
     }
     
@@ -24,6 +25,12 @@ class TableViewController: UIViewController {
         guard let records = try? GameCaretaker.shared.load() else {return}
         self.records = records
         recordsTableView.reloadData()
+    }
+}
+
+extension TableViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

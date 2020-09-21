@@ -13,7 +13,7 @@ class GameViewController: UIViewController {
     /// Game delegate
     public weak var gameDelegate: GameSceneDelegate?
     
-    public var hintsSettings: Settings.HintsSettings = Game.shared.hintsSettings ?? Settings.HintsSettings.oneTime
+    public var hintsSettings: Int? = Game.shared.defaults.integer(forKey: "difficulty")
     
     let getQuestions = GetQuestionsApi()
     var questionSelectionStrategy: QuestionSelectionStrategy?
@@ -39,7 +39,6 @@ class GameViewController: UIViewController {
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
-                   // self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers].currentTitle ?? "error")
                 }
             } else if self.checkAnswer() {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
@@ -270,9 +269,7 @@ class GameViewController: UIViewController {
     }
     
     func setImagePriceButtons(buttons: [UIButton]) {
-        
         buttons.forEach { $0.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal) }
-        
     }
     
     func observerFunc() {
@@ -297,7 +294,6 @@ class GameViewController: UIViewController {
                         }
                     })
                 }
-                print("\(String(describing: change.oldValue)) was change to \(String(describing: change.newValue))")
             }
         }()
     }
@@ -318,12 +314,14 @@ class GameViewController: UIViewController {
         questionSelectionStrategy = SeriesQuestionSelection()
         
         switch hintsSettings {
-        case .infinitely:
-            hintsOptionsStrategy = InfinitelyHintsStrategy()
-        case .oneTime:
-            hintsOptionsStrategy = OneTimeHintsStrategy()
-        case .noHints:
+        case 0:
             hintsOptionsStrategy = NoHintsStrategy()
+        case 1:
+            hintsOptionsStrategy = OneTimeHintsStrategy()
+        case 2:
+            hintsOptionsStrategy = InfinitelyHintsStrategy()
+        default:
+            hintsOptionsStrategy = InfinitelyHintsStrategy()
         }
         
         startGame()
@@ -336,7 +334,7 @@ extension GameViewController: GameSceneDelegate {
         self.dismiss(animated: true, completion: nil)
         var records = (try? GameCaretaker.shared.load()) ?? []
         let newRecord = GameSession(date: Date(), value: result).self
-        records.append(newRecord)
+        records.insert(newRecord, at: 0)
         Game.shared.questionsArrayChild.removeAll()
         Game.shared.questionsArrayMedium.removeAll()
         Game.shared.questionsArrayHard.removeAll()

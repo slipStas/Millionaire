@@ -22,7 +22,7 @@ class HintsUsed {
 public class Game {
     static let shared = Game()
     
-    var gameSession : GameSession?
+    var defaults = UserDefaults.standard 
     
     var isHint50Used : HintsUsed?
     var isFriendCallUsed : HintsUsed?
