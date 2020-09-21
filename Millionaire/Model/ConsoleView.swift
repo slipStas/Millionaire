@@ -10,6 +10,8 @@ import UIKit
 
 class FriendCallView: UIView {
     
+    var isFriendCallEnableNow = false
+    
     let friendCallView: UIView = {
         let view = UIView(frame: .zero)
         view.alpha = 0
@@ -97,7 +99,7 @@ class FriendCallView: UIView {
     }
     
     func animateCircle(duration time: TimeInterval) {
-        
+                
         let strokeEndAnimation = CABasicAnimation(keyPath: "strokeEnd")
         strokeEndAnimation.duration = time
         strokeEndAnimation.fromValue = self.strokeEnd
@@ -124,7 +126,7 @@ class FriendCallView: UIView {
     func startTimer() {
         setup()
         print("start timer")
-        
+        isFriendCallEnableNow = true
         self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCountering), userInfo: nil, repeats: true)
     }
     
@@ -143,6 +145,7 @@ class FriendCallView: UIView {
             view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
             self.timerCounter = 30
             self.strokeEnd = 0
+            self.isFriendCallEnableNow = false
         }
     }
     
@@ -190,6 +193,8 @@ class FriendCallView: UIView {
 }
 
 class AuditoryHelpView: UIView {
+    
+    var isHallHelpEnableNow = false
     
     var auditoryHelpView: UIView = {
         let view = UIView(frame: .zero)
@@ -341,10 +346,12 @@ class AuditoryHelpView: UIView {
         } completion: { (status) in
             view.removeFromSuperview()
             view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+            self.isHallHelpEnableNow = false
         }
     }
     
     func animateColumns(question: Question) {
+        isHallHelpEnableNow = true
         
         var trueAnswerInt = 0
         var count = 0
