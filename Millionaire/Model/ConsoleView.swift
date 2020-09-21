@@ -10,19 +10,6 @@ import UIKit
 
 class FriendCallView: UIView {
     
-    var timer : Timer? = Timer()
-    var timerCounter = 30 {
-        didSet {
-            print(timerCounter)
-            animateCircle(duration: 0.3)
-            if timerCounter == 0 {
-                stopTimer()
-                animateRemoving(view: self.friendCallView)
-            }
-        }
-    }
-    var strokeEnd = 0.0
-    
     let friendCallView: UIView = {
         let view = UIView(frame: .zero)
         
@@ -38,7 +25,30 @@ class FriendCallView: UIView {
         circle.strokeEnd = 0
         return circle
     }()
-
+    
+    let timerLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.textAlignment = .center
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 80)
+        
+        return label
+    }()
+    
+    var timer : Timer? = Timer()
+    var timerCounter = 30 {
+        didSet {
+            print(timerCounter)
+            timerLabel.text = ":" + String(timerCounter)
+            animateCircle(duration: 0.3)
+            if timerCounter == 0 {
+                stopTimer()
+                animateRemoving(view: self.friendCallView)
+            }
+        }
+    }
+    var strokeEnd = 0.0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -51,9 +61,13 @@ class FriendCallView: UIView {
         backgroundColor = UIColor.clear
         
         friendCallView.frame = bounds
+        
+        timerLabel.frame = CGRect(x: friendCallView.frame.minX, y: friendCallView.frame.minY, width: friendCallView.frame.width, height: friendCallView.frame.width)
+        timerLabel.text = ":" + String(timerCounter)
 
         addSubview(friendCallView)
         friendCallView.layer.addSublayer(circleLayer)
+        friendCallView.addSubview(timerLabel)
     }
     
     override func layoutSubviews() {
@@ -69,7 +83,7 @@ class FriendCallView: UIView {
         strokeEndAnimation.duration = time
         strokeEndAnimation.fromValue = self.strokeEnd
         
-        self.strokeEnd += 0.0333
+        self.strokeEnd += 0.033333
         if self.strokeEnd >= 1 {
             self.strokeEnd = 1
         }
@@ -112,7 +126,6 @@ class FriendCallView: UIView {
             self.timerCounter = 30
             self.strokeEnd = 0
         }
-
     }
 }
 
