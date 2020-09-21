@@ -145,7 +145,9 @@ class GameViewController: UIViewController {
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.hallHelpButton)
         
         consoleView.auditoryHelp.setup()
-        consoleView.auditoryHelp.animateColumns()
+        
+        guard let selectedQuestion = self.selectedQuestion else {return}
+        consoleView.auditoryHelp.animateColumns(question: selectedQuestion)
     }
     
     

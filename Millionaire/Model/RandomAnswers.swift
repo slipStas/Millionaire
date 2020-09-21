@@ -8,7 +8,7 @@
 
 import Foundation
 
-class RandomAnswersByFriendCall  {
-    var integer = 0.0
+class RandomAnswers  {
+    var integer = 0
     var index = 0
 }
