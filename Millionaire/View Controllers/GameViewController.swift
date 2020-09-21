@@ -113,7 +113,7 @@ class GameViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     
-    @IBOutlet weak var consoleView: FriendCallView!
+    @IBOutlet weak var consoleView: ConsoleView!
     
     @IBAction func pressedButton(_ sender: UIButton) {
         guard var answer = sender.titleLabel?.text else {return}
@@ -125,19 +125,19 @@ class GameViewController: UIViewController {
             count += 1
         }
         self.answer = answer
-        consoleView.stopTimer()
-        consoleView.animateRemoving(view: consoleView.friendCallView)
+        consoleView.friendCallView.stopTimer()
+        consoleView.friendCallView.animateRemoving(view: consoleView.friendCallView.friendCallView)
     }
     
     @IBAction func callFriend(_ sender: Any) {
         print("calling friend")
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.callFriendButton)
         
-        consoleView.startTimer()
-        consoleView.animateCircle(duration: 0.3)
+        consoleView.friendCallView.startTimer()
+        consoleView.friendCallView.animateCircle(duration: 0.3)
         
         guard let selectedQuestion = self.selectedQuestion else {return}
-        consoleView.friendRandomAnswerGenerate(question: selectedQuestion)
+        consoleView.friendCallView.friendRandomAnswerGenerate(question: selectedQuestion)
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
@@ -220,7 +220,7 @@ class GameViewController: UIViewController {
         var arrayFalseAnswers = question.answers.enumerated().filter {$0.element != question.trueAnswer}.map {$0.offset}
         
         let random = Int.random(in: 0...2)
-        arrayFalseAnswers.remove(at: Int(random))
+        arrayFalseAnswers.remove(at: random)
         return arrayFalseAnswers
     }
     
