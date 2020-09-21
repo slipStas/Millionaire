@@ -125,23 +125,27 @@ class GameViewController: UIViewController {
             count += 1
         }
         self.answer = answer
-        consoleView.friendCallView.stopTimer()
-        consoleView.friendCallView.animateRemoving(view: consoleView.friendCallView.friendCallView)
+        consoleView.friendCall.stopTimer()
+        consoleView.friendCall.animateRemoving(view: consoleView.friendCall.friendCallView)
+        consoleView.auditoryHelp.animateRemoving(view: consoleView.auditoryHelp.auditoryHelpView)
     }
     
     @IBAction func callFriend(_ sender: Any) {
         print("calling friend")
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.callFriendButton)
         
-        consoleView.friendCallView.startTimer()
-        consoleView.friendCallView.animateCircle(duration: 0.3)
+        consoleView.friendCall.startTimer()
+        consoleView.friendCall.animateCircle(duration: 0.3)
         
         guard let selectedQuestion = self.selectedQuestion else {return}
-        consoleView.friendCallView.friendRandomAnswerGenerate(question: selectedQuestion)
+        consoleView.friendCall.friendRandomAnswerGenerate(question: selectedQuestion)
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
         hintsOptionsStrategy?.hintOptionsByTap(button: &self.hallHelpButton)
+        
+        consoleView.auditoryHelp.setup()
+        consoleView.auditoryHelp.animateColumns()
     }
     
     

@@ -12,6 +12,7 @@ class FriendCallView: UIView {
     
     let friendCallView: UIView = {
         let view = UIView(frame: .zero)
+        view.alpha = 0
         
         return view
     }()
@@ -82,6 +83,10 @@ class FriendCallView: UIView {
         friendCallView.layer.addSublayer(circleLayer)
         friendCallView.addSubview(timerLabel)
         friendCallView.addSubview(diagramView)
+        
+        UIView.animate(withDuration: 0.5) {
+            self.friendCallView.alpha = 1
+        }
     }
     
     override func layoutSubviews() {
@@ -130,13 +135,12 @@ class FriendCallView: UIView {
     }
     
     func animateRemoving(view: UIView) {
-        UIView.animate(withDuration: 0.3) {
+        UIView.animate(withDuration: 0.5) {
             view.transform = CGAffineTransform.init(scaleX: 0.2, y: 0.2)
-            view.alpha = 0.2
+            view.alpha = 0
         } completion: { (status) in
             view.removeFromSuperview()
             view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
-            view.alpha = 1
             self.timerCounter = 30
             self.strokeEnd = 0
         }
@@ -187,13 +191,123 @@ class FriendCallView: UIView {
 
 class AuditoryHelpView: UIView {
     
+    var auditoryHelpView: UIView = {
+        let view = UIView(frame: .zero)
+        view.alpha = 0
+        
+        return view
+    }()
+    
+    var abcdLabel: UILabel = {
+        let label = UILabel(frame: .zero)
+        label.text = "A  B  C  D"
+        label.textColor = .systemGray
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 40)
+        
+        return label
+    }()
+    
+    var columnAView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
+        
+        return view
+    }()
+    var columnBView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)
+        
+        return view
+    }()
+    var columnCView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        
+        return view
+    }()
+    var columnDView: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = #colorLiteral(red: 0.5843137503, green: 0.8235294223, blue: 0.4196078479, alpha: 1)
+        
+        return view
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    func setup(){
+        backgroundColor = UIColor.clear
+        
+        auditoryHelpView.frame = bounds
+        
+        columnAView.frame = CGRect(x: 0, y: auditoryHelpView.frame.height / 10 * 9, width: (bounds.width / 4) - 2, height: 1)
+        columnBView.frame = CGRect(x: bounds.width / 4, y: auditoryHelpView.frame.height / 10 * 9, width: (bounds.width / 4) - 2, height: 1)
+        columnCView.frame = CGRect(x: bounds.width / 4 * 2, y: auditoryHelpView.frame.height / 10 * 9, width: (bounds.width / 4) - 2, height: 1)
+        columnDView.frame = CGRect(x: bounds.width / 4 * 3, y: auditoryHelpView.frame.height / 10 * 9, width: (bounds.width / 4) - 2, height: 1)
+        
+        addSubview(auditoryHelpView)
+        auditoryHelpView.addSubview(abcdLabel)
+        auditoryHelpView.addSubview(columnAView)
+        auditoryHelpView.addSubview(columnBView)
+        auditoryHelpView.addSubview(columnCView)
+        auditoryHelpView.addSubview(columnDView)
+        
+        abcdLabel.translatesAutoresizingMaskIntoConstraints = false
+        abcdLabel.leadingAnchor.constraint(equalToSystemSpacingAfter: self.leadingAnchor, multiplier: 0).isActive = true
+        abcdLabel.trailingAnchor.constraint(equalToSystemSpacingAfter: self.trailingAnchor, multiplier: 0).isActive = true
+        abcdLabel.bottomAnchor.constraint(equalToSystemSpacingBelow: self.bottomAnchor, multiplier: 0).isActive = true
+        abcdLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        
+        UIView.animate(withDuration: 0.5) {
+            self.auditoryHelpView.alpha = 1
+        }
+    }
+    
+    func animateRemoving(view: UIView) {
+        UIView.animate(withDuration: 0.5) {
+            view.transform = CGAffineTransform.init(scaleX: 0.2, y: 0.2)
+            view.alpha = 0
+        } completion: { (status) in
+            view.removeFromSuperview()
+            view.transform = CGAffineTransform.init(scaleX: 1, y: 1)
+        }
+    }
+    
+    func animateColumns() {
+        
+        let columnAHeight = CGFloat.random(in: 0...100)
+        let columnBHeight = CGFloat.random(in: 0...100)
+        let columnCHeight = CGFloat.random(in: 0...100)
+        let columnDHeight = CGFloat.random(in: 0...100)
+        
+        UIView.animate(withDuration: 2, delay: 1) {
+            self.columnAView.frame = CGRect(x: self.columnAView.frame.minX, y: self.columnAView.frame.minY - columnAHeight * 3, width: self.columnAView.frame.width, height: self.columnAView.frame.height + columnAHeight * 3)
+        }
+        UIView.animate(withDuration: 2, delay: 1.1) {
+            self.columnBView.frame = CGRect(x: self.columnBView.frame.minX, y: self.columnBView.frame.minY - columnBHeight * 3, width: self.columnBView.frame.width, height: self.columnBView.frame.height + columnBHeight * 3)
+        }
+        UIView.animate(withDuration: 2, delay: 1.2) {
+            self.columnCView.frame = CGRect(x: self.columnCView.frame.minX, y: self.columnCView.frame.minY - columnCHeight * 3, width: self.columnCView.frame.width, height: self.columnCView.frame.height + columnCHeight * 3)
+        }
+        UIView.animate(withDuration: 2, delay: 1.3) {
+            self.columnDView.frame = CGRect(x: self.columnDView.frame.minX, y: self.columnDView.frame.minY - columnDHeight * 3, width: self.columnDView.frame.width, height: self.columnDView.frame.height + columnDHeight * 3)
+        }
+    }
 }
 
+
+
+//-----------------------------------------
 class ConsoleView: UIView {
     
-    var friendCallView = FriendCallView()
+    var friendCall = FriendCallView()
     
-    var auditoryHelpView = AuditoryHelpView()
+    var auditoryHelp = AuditoryHelpView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -208,10 +322,12 @@ class ConsoleView: UIView {
     func setup(){
         backgroundColor = UIColor.clear
         
-        friendCallView.frame = bounds
-        auditoryHelpView.frame = bounds
+        friendCall.frame = bounds
+        auditoryHelp.frame = bounds
         
-        addSubview(auditoryHelpView)
-        addSubview(friendCallView)
+        addSubview(auditoryHelp)
+        addSubview(friendCall)
     }
+    
+   
 }
