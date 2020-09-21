@@ -138,7 +138,13 @@ class GameViewController: UIViewController {
         consoleView.friendCall.animateCircle(duration: 0.3)
         
         guard let selectedQuestion = self.selectedQuestion else {return}
-        consoleView.friendCall.friendRandomAnswerGenerate(question: selectedQuestion)
+        if !consoleView.auditoryHelp.isHallHelpEnableNow {
+            consoleView.friendCall.friendRandomAnswerGenerate(question: selectedQuestion)
+        } else {
+            consoleView.auditoryHelp.animateRemoving(view: consoleView.auditoryHelp.auditoryHelpView)
+            consoleView.friendCall.friendRandomAnswerGenerate(question: selectedQuestion)
+        }
+        
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
@@ -147,7 +153,14 @@ class GameViewController: UIViewController {
         consoleView.auditoryHelp.setup()
         
         guard let selectedQuestion = self.selectedQuestion else {return}
-        consoleView.auditoryHelp.animateColumns(question: selectedQuestion)
+        
+        if !consoleView.friendCall.isFriendCallEnableNow {
+            consoleView.auditoryHelp.animateColumns(question: selectedQuestion)
+        } else {
+            consoleView.friendCall.animateRemoving(view: consoleView.friendCall.friendCallView)
+            consoleView.auditoryHelp.animateColumns(question: selectedQuestion)
+        }
+        
     }
     
     
