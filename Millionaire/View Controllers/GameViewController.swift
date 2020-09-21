@@ -39,6 +39,7 @@ class GameViewController: UIViewController {
                 }) { _ in
                     self.pressedButton?.setBackgroundImage(UIImage(named: "mainBackground"), for: .normal)
                     self.countTrueAnswers.countTrueAnswers += 1
+                    self.gameDelegate?.didEndGame(result: self.labelsPriceArray[self.countTrueAnswers.countTrueAnswers - 1].currentTitle ?? "error")
                 }
             } else if self.checkAnswer() {
                 UIView.animate(withDuration: 0.07, delay: 0, options: [.autoreverse, .repeat], animations: {
@@ -134,6 +135,9 @@ class GameViewController: UIViewController {
         
         consoleView.startTimer()
         consoleView.animateCircle(duration: 0.3)
+        
+        guard let selectedQuestion = self.selectedQuestion else {return}
+        consoleView.friendRandomAnswerGenerate(question: selectedQuestion)
     }
     @IBAction func hallHelp(_ sender: Any) {
         print("helping hall")
@@ -301,7 +305,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        questions = Game.shared.questionsArrayChild
+        questions = Game.shared.questionsArrayLow
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
         setTitlePriceButtons(buttons: labelsPriceArray)
@@ -335,15 +339,15 @@ extension GameViewController: GameSceneDelegate {
         var records = (try? GameCaretaker.shared.load()) ?? []
         let newRecord = GameSession(date: Date(), value: result).self
         records.insert(newRecord, at: 0)
-        Game.shared.questionsArrayChild.removeAll()
+        Game.shared.questionsArrayLow.removeAll()
         Game.shared.questionsArrayMedium.removeAll()
         Game.shared.questionsArrayHard.removeAll()
         
         DispatchQueue.global(qos: .userInteractive).async {
-            self.getQuestions.getQuestions(questionDifficulty: .child) { (state) in
+            self.getQuestions.getQuestions(questionDifficulty: .low) { (state) in
                 if state {
                     print("add 5 questions")
-                    self.questions.append(contentsOf: Game.shared.questionsArrayChild)
+                    self.questions.append(contentsOf: Game.shared.questionsArrayLow)
                 } else {
                     print("Error with data from server")
                 }

@@ -35,6 +35,17 @@ class FriendCallView: UIView {
         return label
     }()
     
+    let diagramView: UITextView = {
+        let textView = UITextView(frame: .zero)
+        textView.isEditable = false
+        textView.textColor = .systemGray
+        textView.backgroundColor = .clear
+        textView.font = UIFont.systemFont(ofSize: 20)
+        textView.text = "qwerty bgrbyteh ergkjkmlfse jnfwrf4"
+        
+        return textView
+    }()
+    
     var timer : Timer? = Timer()
     var timerCounter = 30 {
         didSet {
@@ -48,6 +59,7 @@ class FriendCallView: UIView {
         }
     }
     var strokeEnd = 0.0
+//    var theFriendText = "Я думаю, что правильный ответ это - "
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -64,10 +76,14 @@ class FriendCallView: UIView {
         
         timerLabel.frame = CGRect(x: friendCallView.frame.minX, y: friendCallView.frame.minY, width: friendCallView.frame.width, height: friendCallView.frame.width)
         timerLabel.text = ":" + String(timerCounter)
+        
+        diagramView.frame = CGRect(x: friendCallView.frame.minX, y: friendCallView.frame.width, width: friendCallView.frame.width, height: friendCallView.frame.width)
+//        diagramView.text = theFriendText
 
         addSubview(friendCallView)
         friendCallView.layer.addSublayer(circleLayer)
         friendCallView.addSubview(timerLabel)
+        friendCallView.addSubview(diagramView)
     }
     
     override func layoutSubviews() {
@@ -126,6 +142,46 @@ class FriendCallView: UIView {
             self.timerCounter = 30
             self.strokeEnd = 0
         }
+    }
+    
+    func friendRandomAnswerGenerate(question: Question) {
+        print(question.trueAnswer)
+        var friendAnswer = "Я думаю, что правильный ответ это - "
+        
+        let answerA = RandomAnswersByFriendCall()
+        let answerB = RandomAnswersByFriendCall()
+        let answerC = RandomAnswersByFriendCall()
+        let answerD = RandomAnswersByFriendCall()
+        
+        var count = 0
+        var selectedAnswerByFriend = 0.0
+        
+        var answersArray = [answerA, answerB, answerC, answerD]
+        
+        question.answers.forEach { (answer) in
+            var randomiser = 0.0
+            if answer == question.trueAnswer {
+                randomiser = Double.random(in: 50...100)
+            } else {
+                randomiser = Double.random(in: 0...100)
+            }
+            answersArray[count].integer = randomiser
+            answersArray[count].index = count
+            
+            count += 1
+        }
+        
+        answersArray.forEach { (item) in
+            if selectedAnswerByFriend < item.integer {
+                answersArray.removeFirst()
+            } else {
+                selectedAnswerByFriend = item.integer
+            }
+        }
+        
+        friendAnswer += question.answers[answersArray.first?.index ?? 0]
+        
+        self.diagramView.text = friendAnswer
     }
 }
 

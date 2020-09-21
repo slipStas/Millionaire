@@ -17,14 +17,14 @@ class MainViewController: UIViewController {
     var isDataLoad = false
     
     @IBAction func refreshQuestions(_ sender: Any) {
-        Game.shared.questionsArrayChild.removeAll()
+        Game.shared.questionsArrayLow.removeAll()
         Game.shared.questionsArrayMedium.removeAll()
         Game.shared.questionsArrayHard.removeAll()
         isDataLoad = false
         loadQuestions()
     }
     @IBAction func startGameTap(_ sender: Any) {
-        if Game.shared.questionsArrayChild.count > 0 {
+        if Game.shared.questionsArrayLow.count > 0 {
             let storyBoard : UIStoryboard = UIStoryboard(name:"Main", bundle: nil)
             let newViewController = storyBoard.instantiateViewController(withIdentifier: "GameVC") as! GameViewController
             self.present(newViewController, animated: true, completion: nil)
@@ -48,13 +48,13 @@ class MainViewController: UIViewController {
         let question14 = Question(question: "Во что оборачивают на время созревания сыр ярг, который производят в английском графстве Корнуолл?", answers: ["в мох", "в навозные лепешки", "в листья крапивы", "в торф"], trueAnswer: "в листья крапивы")
         let question15 = Question(question: " Как на Руси называлась небольшая комната, обычно в верхней части дома?", answers: ["светелка", "горелка", "огневка", "теплушка"], trueAnswer: "светелка")
         
-        Game.shared.questionsArrayChild.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
+        Game.shared.questionsArrayLow.append(contentsOf: [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15])
         print("questions load from device")
     }
     
     func loadQuestions() {
         DispatchQueue.global(qos: .userInteractive).async {
-            self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty.child) { (state)  in
+            self.getQuestions.getQuestions(questionDifficulty: QuestionDifficulty.low) { (state)  in
                 DispatchQueue.main.async {
                     if state {
                         print("add 5 questions")

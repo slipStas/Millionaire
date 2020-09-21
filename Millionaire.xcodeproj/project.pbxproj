@@ -24,6 +24,7 @@
 		8EA7EE29246490C600BA2D74 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8EA7EE28246490C600BA2D74 /* Assets.xcassets */; };
 		8EA7EE342464915400BA2D74 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EA7EE332464915400BA2D74 /* MainViewController.swift */; };
 		8EB4BE652517B598007F260D /* ConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4BE642517B598007F260D /* ConsoleView.swift */; };
+		8EB4BE682518F27E007F260D /* RandomAnswersByFriendCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EB4BE672518F27E007F260D /* RandomAnswersByFriendCall.swift */; };
 		8EE41A652467005700A7F9F1 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EE41A642467005700A7F9F1 /* Helper.swift */; };
 		8EF6BA32246D40840025CD08 /* GetQuestionsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BA31246D40840025CD08 /* GetQuestionsApi.swift */; };
 		8EF6BA34246D40AA0025CD08 /* QuestionsApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF6BA33246D40AA0025CD08 /* QuestionsApi.swift */; };
@@ -52,6 +53,7 @@
 		8EA7EE2D246490C600BA2D74 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8EA7EE332464915400BA2D74 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		8EB4BE642517B598007F260D /* ConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleView.swift; sourceTree = "<group>"; };
+		8EB4BE672518F27E007F260D /* RandomAnswersByFriendCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomAnswersByFriendCall.swift; sourceTree = "<group>"; };
 		8EE41A642467005700A7F9F1 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		8EF6BA31246D40840025CD08 /* GetQuestionsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuestionsApi.swift; sourceTree = "<group>"; };
 		8EF6BA33246D40AA0025CD08 /* QuestionsApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsApi.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				8EA415F1246495BF00E1DC22 /* Question.swift */,
 				8EF83B6D2469D6D700B1383A /* Settings.swift */,
 				8EB4BE642517B598007F260D /* ConsoleView.swift */,
+				8EB4BE672518F27E007F260D /* RandomAnswersByFriendCall.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				8E4E798C2469E70700A64ABB /* QuestionSelectionStrategy.swift in Sources */,
 				8EA415FA24659DDE00E1DC22 /* TableViewController.swift in Sources */,
 				8EA415F2246495C000E1DC22 /* Question.swift in Sources */,
+				8EB4BE682518F27E007F260D /* RandomAnswersByFriendCall.swift in Sources */,
 				8EA415F82465706200E1DC22 /* GameSession.swift in Sources */,
 				8EF83B732469DD7500B1383A /* SettingsViewController.swift in Sources */,
 				8EF6BA32246D40840025CD08 /* GetQuestionsApi.swift in Sources */,
