@@ -368,7 +368,7 @@ class AuditoryHelpView: UIView {
         question.answers.forEach { (answer) in
             switch answer {
             case question.trueAnswer:
-                answersArray.insert(Int.random(in: 0...bufferInteger), at: count)
+                answersArray.insert(Int.random(in: (bufferInteger / 2)...bufferInteger), at: count)
                 bufferInteger -= answersArray[count]
                 trueAnswerInt = count
             case "":
@@ -417,9 +417,6 @@ class AuditoryHelpView: UIView {
     }
 }
 
-
-
-//-----------------------------------------
 class ConsoleView: UIView {
     
     var friendCall = FriendCallView()
