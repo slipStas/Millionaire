@@ -28,10 +28,6 @@ public class Game {
     var isFriendCallUsed : HintsUsed?
     var isHallHelpUsed : HintsUsed?
     
-    var questionsArrayLow: [Question] = []
-    var questionsArrayMedium: [Question] = []
-    var questionsArrayHard: [Question] = []
-    
     var hintsSettings: Settings.HintsSettings? 
     
     private init() {}

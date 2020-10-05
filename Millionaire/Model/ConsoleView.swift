@@ -22,8 +22,9 @@ class FriendCallView: UIView {
     let circleLayer: CAShapeLayer = {
         let circle = CAShapeLayer()
         circle.fillColor = UIColor.clear.cgColor
-        circle.strokeColor = UIColor.green.cgColor
-        circle.lineWidth = 7.0
+        circle.strokeColor = #colorLiteral(red: 0.5563425422, green: 0.9793455005, blue: 0, alpha: 0.7).cgColor
+        circle.lineWidth = 10.0
+        circle.lineCap = .round
 
         circle.strokeEnd = 0
         return circle
@@ -33,7 +34,7 @@ class FriendCallView: UIView {
         let label = UILabel(frame: .zero)
         label.textAlignment = .center
         label.textColor = .systemGray
-        label.font = UIFont.systemFont(ofSize: 80)
+        label.font = UIFont.monospacedDigitSystemFont(ofSize: 80, weight: .bold) 
         
         return label
     }()
@@ -44,7 +45,7 @@ class FriendCallView: UIView {
         textView.textColor = .systemGray
         textView.backgroundColor = .clear
         textView.font = UIFont.systemFont(ofSize: 20)
-        textView.text = "qwerty bgrbyteh ergkjkmlfse jnfwrf4"
+        textView.text = ""
         
         return textView
     }()

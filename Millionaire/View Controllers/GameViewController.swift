@@ -190,7 +190,7 @@ class GameViewController: UIViewController {
                     if state {
                         sleep(4)
                         print("add 5 medium questions")
-                        self.questions.append(contentsOf: Game.shared.questionsArrayMedium)
+                        self.questions.append(contentsOf: MockDatabase.shared.questionsArrayMedium)
                     } else {
                         print("Error with data from server")
                     }
@@ -203,7 +203,7 @@ class GameViewController: UIViewController {
                     if state {
                         sleep(4)
                         print("add 5 hard questions")
-                        self.questions.append(contentsOf: Game.shared.questionsArrayHard)
+                        self.questions.append(contentsOf: MockDatabase.shared.questionsArrayHard)
                     } else {
                         print("Error with data from server")
                     }
@@ -324,7 +324,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
                 
-        questions = Game.shared.questionsArrayLow
+        questions = MockDatabase.shared.questionsArrayLow
         labelsPriceArray.append(contentsOf: [question1PriceLabel, question2PriceLabel, question3PriceLabel, question4PriceLabel, question5PriceLabel, question6PriceLabel, question7PriceLabel, question8PriceLabel, question9PriceLabel, question10PriceLabel, question11PriceLabel, question12PriceLabel, question13PriceLabel, question14PriceLabel, question15PriceLabel])
         
         setTitlePriceButtons(buttons: labelsPriceArray)
@@ -358,15 +358,15 @@ extension GameViewController: GameSceneDelegate {
         var records = (try? GameCaretaker.shared.load()) ?? []
         let newRecord = GameSession(date: Date(), value: result).self
         records.insert(newRecord, at: 0)
-        Game.shared.questionsArrayLow.removeAll()
-        Game.shared.questionsArrayMedium.removeAll()
-        Game.shared.questionsArrayHard.removeAll()
+        MockDatabase.shared.questionsArrayLow.removeAll()
+        MockDatabase.shared.questionsArrayMedium.removeAll()
+        MockDatabase.shared.questionsArrayHard.removeAll()
         
         DispatchQueue.global(qos: .userInteractive).async {
             self.getQuestions.getQuestions(questionDifficulty: .low) { (state) in
                 if state {
                     print("add 5 questions")
-                    self.questions.append(contentsOf: Game.shared.questionsArrayLow)
+                    self.questions.append(contentsOf: MockDatabase.shared.questionsArrayLow)
                 } else {
                     print("Error with data from server")
                 }
