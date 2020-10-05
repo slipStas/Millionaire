@@ -50,12 +50,12 @@ class GetQuestionsApi {
                 
                 switch difficulty {
                 case .low:
-                    Game.shared.questionsArrayLow.append(question)
+                    MockDatabase.shared.questionsArrayLow.append(question)
                 case .medium:
                     print("add medium")
-                    Game.shared.questionsArrayMedium.append(question)
+                    MockDatabase.shared.questionsArrayMedium.append(question)
                 case .hard:
-                    Game.shared.questionsArrayHard.append(question)
+                    MockDatabase.shared.questionsArrayHard.append(question)
                 default:
                     break
                 }
