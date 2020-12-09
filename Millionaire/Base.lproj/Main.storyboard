@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bfR-LI-aVb">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bfR-LI-aVb">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -468,7 +468,7 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eH2-Yg-bop" customClass="ConsoleView" customModule="Millionaire" customModuleProvider="target">
-                                <rect key="frame" x="223" y="216" width="183" height="366"/>
+                                <rect key="frame" x="223" y="228" width="171" height="342"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="eH2-Yg-bop" secondAttribute="height" multiplier="1:2" id="mb7-Af-4nI"/>
@@ -486,7 +486,7 @@
                             <constraint firstItem="J8o-tO-oh6" firstAttribute="top" secondItem="mu0-Ra-NUq" secondAttribute="bottom" constant="16" id="IjW-B6-3d6"/>
                             <constraint firstItem="eH2-Yg-bop" firstAttribute="centerY" secondItem="giL-p1-1Fx" secondAttribute="centerY" id="JTE-pW-RKJ"/>
                             <constraint firstItem="QiO-Cy-jt1" firstAttribute="centerY" secondItem="mu0-Ra-NUq" secondAttribute="centerY" id="R16-4X-S9q"/>
-                            <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="eH2-Yg-bop" secondAttribute="trailing" constant="8" id="SBP-1S-nit"/>
+                            <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="eH2-Yg-bop" secondAttribute="trailing" constant="20" id="SBP-1S-nit"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="qSI-SN-mOJ" secondAttribute="trailing" constant="16" id="Wlg-2o-Nba"/>
                             <constraint firstItem="qSI-SN-mOJ" firstAttribute="leading" secondItem="Ysv-iG-vED" secondAttribute="leading" constant="16" id="YVj-6g-2bW"/>
                             <constraint firstItem="Ysv-iG-vED" firstAttribute="trailing" secondItem="mu0-Ra-NUq" secondAttribute="trailing" id="ahr-5h-xvh"/>
